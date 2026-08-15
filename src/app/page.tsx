@@ -78,6 +78,10 @@ export default function Home() {
               Написать
             </Link>
           </div>
+          <p className="mt-6 flex items-baseline gap-2">
+            <span className="font-display text-2xl text-ink">10+</span>
+            <span className="eyebrow">лет практики в миграционном праве</span>
+          </p>
         </div>
         <div className="flex justify-start">
           <div className="relative w-64 sm:w-72">
@@ -90,14 +94,6 @@ export default function Home() {
                 sizes="(max-width: 640px) 256px, 288px"
                 priority
               />
-            </div>
-            <div
-              className="absolute -bottom-5 -right-5 w-24 h-24 bg-paper border border-brass rounded-full flex flex-col items-center justify-center text-center shadow-sm"
-            >
-              <span className="font-display text-xl text-ink leading-none">10+</span>
-              <span className="font-sans text-[9px] font-medium tracking-wide text-text-muted mt-1">
-                ЛЕТ ПРАКТИКИ
-              </span>
             </div>
           </div>
         </div>
