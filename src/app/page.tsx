@@ -99,6 +99,16 @@ export default function Home() {
         </div>
       </section>
 
+      {/* Видео */}
+      <section className="mx-auto max-w-6xl px-4 pb-14">
+        <div className="relative aspect-video bg-paper-raised border border-line overflow-hidden flex items-center justify-center">
+          {/* Заменить на реальное видео: <video src="/videos/urist-intro.mp4" controls className="w-full h-full object-cover" /> */}
+          <span className="text-text-muted text-sm text-center px-6">
+            [ видео: консультация миграционного юриста ]
+          </span>
+        </div>
+      </section>
+
       {/* Услуги */}
       <section className="mx-auto max-w-6xl px-4 pt-2 pb-14">
         <SectionLabel>Услуги</SectionLabel>
