@@ -29,7 +29,7 @@ export default function Page() {
             </a>
           </p>
         </div>
-        <div className="aspect-square rounded-lg bg-paper-raised flex items-center justify-center text-brass text-sm">
+        <div className="aspect-square border border-line bg-paper-raised flex items-center justify-center text-text-muted text-sm">
           [ фото юриста ]
         </div>
       </div>

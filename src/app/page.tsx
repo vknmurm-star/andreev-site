@@ -1,5 +1,4 @@
 import Link from "next/link";
-import Seal from "@/components/Seal";
 
 const services = [
   {
@@ -80,8 +79,20 @@ export default function Home() {
           </div>
         </div>
         <div className="flex justify-center md:justify-end">
-          <div className="w-56 h-56 sm:w-64 sm:h-64">
-            <Seal />
+          <div className="relative w-64 sm:w-72">
+            <div className="aspect-[4/5] bg-paper-raised border border-line flex items-center justify-center overflow-hidden">
+              <span className="text-text-muted text-sm text-center px-6">
+                [ фото Е.В. Андреева ]
+              </span>
+            </div>
+            <div
+              className="absolute -bottom-5 -left-5 w-24 h-24 bg-paper border border-brass rounded-full flex flex-col items-center justify-center text-center shadow-sm"
+            >
+              <span className="font-display text-xl text-ink leading-none">10+</span>
+              <span className="font-mono text-[8px] tracking-wide text-text-muted mt-1">
+                ЛЕТ ПРАКТИКИ
+              </span>
+            </div>
           </div>
         </div>
       </section>
@@ -104,32 +115,25 @@ export default function Home() {
       </section>
 
       {/* Компетенции */}
-      <section className="py-14" style={{ background: "var(--ink)" }}>
-        <div className="mx-auto max-w-6xl px-4">
-          <div className="mb-4">
-            <div className="letterhead-rule w-12 mb-2" style={{ borderColor: "var(--brass)" }} />
-            <span className="eyebrow" style={{ color: "var(--brass)" }}>
-              Компетенции
-            </span>
-          </div>
-          <ul className="grid sm:grid-cols-2 gap-x-8 gap-y-3 text-paper/90">
-            {[
-              "Представление интересов иностранцев в судах РФ и за границей",
-              "Оформление РВП, ВНЖ, гражданства России",
-              "Снятие установленного запрета на въезд",
-              "Отмена и обжалование выдворения",
-              "Отмена депортации",
-              "Оспаривание действий отдела миграции МВД в суде",
-              "Сопровождение при оформлении разрешения на трудоустройство",
-              "Представление интересов в кассации, апелляции, Верховном Суде РФ",
-            ].map((item) => (
-              <li key={item} className="flex gap-3 text-sm leading-relaxed">
-                <span style={{ color: "var(--brass)" }}>§</span>
-                {item}
-              </li>
-            ))}
-          </ul>
-        </div>
+      <section className="mx-auto max-w-6xl px-4 py-14">
+        <SectionLabel>Компетенции</SectionLabel>
+        <ul className="grid sm:grid-cols-2 gap-x-8 gap-y-3">
+          {[
+            "Представление интересов иностранцев в судах РФ и за границей",
+            "Оформление РВП, ВНЖ, гражданства России",
+            "Снятие установленного запрета на въезд",
+            "Отмена и обжалование выдворения",
+            "Отмена депортации",
+            "Оспаривание действий отдела миграции МВД в суде",
+            "Сопровождение при оформлении разрешения на трудоустройство",
+            "Представление интересов в кассации, апелляции, Верховном Суде РФ",
+          ].map((item) => (
+            <li key={item} className="flex gap-3 text-sm leading-relaxed text-text">
+              <span className="text-brass">§</span>
+              {item}
+            </li>
+          ))}
+        </ul>
       </section>
 
       {/* Оплата */}
@@ -193,6 +197,11 @@ export default function Home() {
             >
               Форма обратной связи →
             </Link>
+          </div>
+          <div className="w-40 aspect-[4/5] bg-paper-raised border border-line flex items-center justify-center">
+            <span className="text-text-muted text-xs text-center px-3">
+              [ фото ]
+            </span>
           </div>
         </div>
       </section>
