@@ -14,7 +14,7 @@ function Table({ title, rows }: { title: string; rows: Row[] }) {
       <div className="rounded-lg border border-line divide-y divide-line">
         {rows.map(([service, price], i) => (
           <div key={i} className="px-4 py-3 flex flex-col sm:flex-row sm:items-start sm:gap-6">
-            <span className="text-text text-sm sm:flex-1">{service}</span>
+            <span className="text-text text-sm sm:flex-1 sm:min-w-0">{service}</span>
             <span className="font-medium text-sm sm:text-right sm:whitespace-nowrap shrink-0 mt-1 sm:mt-0">
               {price}
             </span>
