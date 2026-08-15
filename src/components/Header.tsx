@@ -28,7 +28,7 @@ export default function Header() {
           +7 999 470-20-20
         </a>
       </div>
-      <nav className="mx-auto max-w-6xl px-4 py-3 flex flex-wrap items-center gap-x-5 gap-y-2 text-[13px] text-ink-soft">
+      <nav className="mx-auto max-w-6xl px-4 py-3 flex flex-wrap items-center gap-x-6 gap-y-2 text-[14.5px] font-medium text-ink">
         {menu.map((item) => (
           <Link
             key={item.href}
