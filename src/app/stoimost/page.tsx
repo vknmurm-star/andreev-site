@@ -11,19 +11,15 @@ function Table({ title, rows }: { title: string; rows: Row[] }) {
   return (
     <div className="mb-10">
       <h2 className="font-display text-xl text-ink mb-3">{title}</h2>
-      <div className="overflow-x-auto rounded-lg border border-line">
-        <table className="w-full text-sm">
-          <tbody>
-            {rows.map(([service, price], i) => (
-              <tr key={i} className="border-b border-line last:border-0">
-                <td className="px-4 py-3 text-text">{service}</td>
-                <td className="px-4 py-3 text-right font-medium whitespace-nowrap">
-                  {price}
-                </td>
-              </tr>
-            ))}
-          </tbody>
-        </table>
+      <div className="rounded-lg border border-line divide-y divide-line">
+        {rows.map(([service, price], i) => (
+          <div key={i} className="px-4 py-3 flex flex-col sm:flex-row sm:items-baseline sm:justify-between gap-1 sm:gap-4">
+            <span className="text-text text-sm">{service}</span>
+            <span className="font-medium text-sm sm:text-right sm:whitespace-nowrap shrink-0">
+              {price}
+            </span>
+          </div>
+        ))}
       </div>
     </div>
   );
