@@ -131,7 +131,7 @@ export default function Home() {
             "Представление интересов в кассации, апелляции, Верховном Суде РФ",
           ].map((item) => (
             <li key={item} className="flex gap-3 text-sm leading-relaxed text-text">
-              <span className="text-brass">§</span>
+              <span className="text-brass">•</span>
               {item}
             </li>
           ))}
