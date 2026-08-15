@@ -37,7 +37,7 @@ export default function Page() {
         трудовая деятельность по патенту, очное обучение в вузе.
       </p>
 
-      <p className="text-sm text-neutral-500 mt-8">
+      <p className="text-sm text-text-muted mt-8">
         Тел.: +7 (999) 470-20-20, в том числе WhatsApp.
       </p>
     </article>

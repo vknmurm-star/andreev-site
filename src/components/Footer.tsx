@@ -2,14 +2,15 @@ import Link from "next/link";
 
 export default function Footer() {
   return (
-    <footer className="border-t border-neutral-200 bg-neutral-50 mt-16">
-      <div className="mx-auto max-w-6xl px-4 py-8 text-sm text-neutral-600 flex flex-col sm:flex-row justify-between gap-4">
-        <p>© {new Date().getFullYear()} AndreevEgor.ru. Все права защищены.</p>
-        <div className="flex gap-4">
-          <Link href="/privacy" className="hover:text-neutral-900">
+    <footer className="mt-24">
+      <div className="letterhead-rule" style={{ borderColor: "var(--line)" }} />
+      <div className="mx-auto max-w-6xl px-4 py-8 text-[13px] text-text-muted flex flex-col sm:flex-row justify-between gap-4">
+        <p className="font-mono">© {new Date().getFullYear()} AndreevEgor.ru</p>
+        <div className="flex gap-5">
+          <Link href="/privacy" className="hover:text-seal transition-colors">
             Политика конфиденциальности
           </Link>
-          <Link href="/kontakty" className="hover:text-neutral-900">
+          <Link href="/kontakty" className="hover:text-seal transition-colors">
             Контакты
           </Link>
         </div>

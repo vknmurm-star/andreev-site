@@ -57,7 +57,7 @@ export default function Page() {
         срок можно лишь при наличии уважительных причин.
       </p>
 
-      <p className="text-sm text-neutral-500 mt-8">
+      <p className="text-sm text-text-muted mt-8">
         Документы для консультации можно направить на{" "}
         <a href="mailto:AndreevZakon@mail.ru">AndreevZakon@mail.ru</a>.
       </p>

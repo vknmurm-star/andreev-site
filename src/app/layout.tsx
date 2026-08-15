@@ -11,8 +11,27 @@ export const metadata: Metadata = {
 
 export default function RootLayout({ children }: LayoutProps<"/">) {
   return (
-    <html lang="ru" className="h-full antialiased">
-      <body className="min-h-full flex flex-col bg-white text-neutral-900 font-sans">
+    <html lang="ru" className="h-full">
+      <head>
+        <link rel="preconnect" href="https://fonts.googleapis.com" />
+        <link
+          rel="preconnect"
+          href="https://fonts.gstatic.com"
+          crossOrigin="anonymous"
+        />
+        <link
+          href="https://fonts.googleapis.com/css2?family=PT+Serif:ital,wght@0,400;0,700;1,400&family=Inter:wght@400;500;600&family=JetBrains+Mono:wght@400;500&display=swap"
+          rel="stylesheet"
+        />
+        <style>{`
+          :root {
+            --font-pt-serif: 'PT Serif', Georgia, serif;
+            --font-inter: 'Inter', system-ui, sans-serif;
+            --font-mono-legal: 'JetBrains Mono', ui-monospace, monospace;
+          }
+        `}</style>
+      </head>
+      <body className="min-h-full flex flex-col bg-paper text-text antialiased">
         <Header />
         <main className="flex-1">{children}</main>
         <Footer />

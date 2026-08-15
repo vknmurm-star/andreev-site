@@ -11,13 +11,13 @@ type Row = [string, string];
 function Table({ title, rows }: { title: string; rows: Row[] }) {
   return (
     <div className="mb-10">
-      <h2 className="text-xl font-semibold mb-3">{title}</h2>
-      <div className="overflow-x-auto rounded-lg border border-neutral-200">
+      <h2 className="font-display text-xl text-ink mb-3">{title}</h2>
+      <div className="overflow-x-auto rounded-lg border border-line">
         <table className="w-full text-sm">
           <tbody>
             {rows.map(([service, price], i) => (
-              <tr key={i} className="border-b border-neutral-100 last:border-0">
-                <td className="px-4 py-3 text-neutral-700">{service}</td>
+              <tr key={i} className="border-b border-line last:border-0">
+                <td className="px-4 py-3 text-text">{service}</td>
                 <td className="px-4 py-3 text-right font-medium whitespace-nowrap">
                   {price}
                 </td>
@@ -33,7 +33,7 @@ function Table({ title, rows }: { title: string; rows: Row[] }) {
 export default function Page() {
   return (
     <section className="mx-auto max-w-3xl px-4 py-14">
-      <h1 className="text-3xl font-semibold mb-8">Стоимость услуг юриста</h1>
+      <h1 className="font-display text-3xl text-ink mb-8">Стоимость услуг юриста</h1>
 
       <Table
         title="Миграционные услуги"
@@ -91,7 +91,7 @@ export default function Page() {
         ]}
       />
 
-      <p className="text-sm text-neutral-500 border-t border-neutral-200 pt-6">
+      <p className="text-sm text-text-muted border-t border-line pt-6">
         Конкретный размер гонорара в каждом случае определяется соглашением
         между юристом и доверителем с учётом квалификации, сложности,
         срочности и объёма работы.

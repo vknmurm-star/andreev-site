@@ -9,32 +9,32 @@ export const metadata: Metadata = {
 export default function Page() {
   return (
     <section className="mx-auto max-w-3xl px-4 py-14">
-      <h1 className="text-3xl font-semibold mb-8">Контакты</h1>
+      <h1 className="font-display text-3xl text-ink mb-8">Контакты</h1>
 
       <div className="grid sm:grid-cols-2 gap-8 mb-10">
-        <div className="space-y-2 text-neutral-700">
+        <div className="space-y-2 text-text">
           <p className="font-medium">119017, г. Москва</p>
           <p>Малая Ордынка, 5/6 стр. 4, офис 26</p>
           <p className="mt-4">
             Тел.:{" "}
-            <a href="tel:+79994702020" className="underline">
+            <a href="tel:+79994702020" className="text-seal underline underline-offset-4">
               +7 (999) 470-20-20
             </a>{" "}
             (в т.ч. WhatsApp)
           </p>
           <p>
             E-mail:{" "}
-            <a href="mailto:AndreevZakon@mail.ru" className="underline">
+            <a href="mailto:AndreevZakon@mail.ru" className="text-seal underline underline-offset-4">
               AndreevZakon@mail.ru
             </a>
           </p>
         </div>
-        <div className="aspect-square rounded-lg bg-neutral-100 flex items-center justify-center text-neutral-400 text-sm">
+        <div className="aspect-square rounded-lg bg-paper-raised flex items-center justify-center text-brass text-sm">
           [ фото юриста ]
         </div>
       </div>
 
-      <p className="text-neutral-600 mb-10">
+      <p className="text-text-muted mb-10">
         Возможен выезд в любую точку Российской Федерации с оплатой
         командировочных расходов, а также подготовка документов для отмены
         запрета на въезд для любого суда на территории РФ.
@@ -42,29 +42,29 @@ export default function Page() {
 
       <form className="grid gap-4 max-w-md mb-14">
         <div>
-          <label className="block text-sm text-neutral-600 mb-1">Ваше имя*</label>
-          <input className="w-full rounded-md border border-neutral-300 px-3 py-2" required />
+          <label className="block text-sm text-text-muted mb-1">Ваше имя*</label>
+          <input className="w-full rounded-none border border-line bg-paper-raised px-3 py-2 focus:outline-none focus:border-ink" required />
         </div>
         <div>
-          <label className="block text-sm text-neutral-600 mb-1">Ваш e-mail*</label>
-          <input type="email" className="w-full rounded-md border border-neutral-300 px-3 py-2" required />
+          <label className="block text-sm text-text-muted mb-1">Ваш e-mail*</label>
+          <input type="email" className="w-full rounded-none border border-line bg-paper-raised px-3 py-2 focus:outline-none focus:border-ink" required />
         </div>
         <div>
-          <label className="block text-sm text-neutral-600 mb-1">Ваш телефон*</label>
-          <input className="w-full rounded-md border border-neutral-300 px-3 py-2" required />
+          <label className="block text-sm text-text-muted mb-1">Ваш телефон*</label>
+          <input className="w-full rounded-none border border-line bg-paper-raised px-3 py-2 focus:outline-none focus:border-ink" required />
         </div>
         <div>
-          <label className="block text-sm text-neutral-600 mb-1">Сообщение</label>
-          <textarea rows={4} className="w-full rounded-md border border-neutral-300 px-3 py-2" />
+          <label className="block text-sm text-text-muted mb-1">Сообщение</label>
+          <textarea rows={4} className="w-full rounded-none border border-line bg-paper-raised px-3 py-2 focus:outline-none focus:border-ink" />
         </div>
-        <label className="flex items-start gap-2 text-xs text-neutral-500">
+        <label className="flex items-start gap-2 text-xs text-text-muted">
           <input type="checkbox" required className="mt-0.5" />
           Я даю согласие на обработку моих персональных данных в соответствии
-          с <a href="/privacy" className="underline">политикой конфиденциальности</a>.
+          с <a href="/privacy" className="text-seal underline underline-offset-4">политикой конфиденциальности</a>.
         </label>
         <button
           type="submit"
-          className="rounded-md bg-neutral-900 text-white px-5 py-3 font-medium hover:bg-neutral-700 w-fit"
+          className="rounded-none bg-ink text-paper px-6 py-3 font-medium hover:bg-seal transition-colors w-fit"
         >
           Отправить
         </button>

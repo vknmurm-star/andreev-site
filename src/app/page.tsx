@@ -1,4 +1,5 @@
 import Link from "next/link";
+import Seal from "@/components/Seal";
 
 const services = [
   {
@@ -38,74 +39,92 @@ const situations = [
   },
 ];
 
+function SectionLabel({ children }: { children: React.ReactNode }) {
+  return (
+    <div className="mb-4">
+      <div className="letterhead-rule w-12 mb-2" style={{ borderColor: "var(--brass)" }} />
+      <span className="eyebrow">{children}</span>
+    </div>
+  );
+}
+
 export default function Home() {
   return (
     <>
       {/* Hero */}
-      <section className="mx-auto max-w-6xl px-4 py-14 grid md:grid-cols-2 gap-10 items-center">
+      <section className="mx-auto max-w-6xl px-4 py-16 grid md:grid-cols-[1.2fr_1fr] gap-12 items-center">
         <div>
-          <h1 className="text-3xl sm:text-4xl font-semibold leading-tight">
-            Миграционный юрист Егор Викторович Андреев
+          <p className="eyebrow mb-3">Адвокат по миграционному праву · Москва</p>
+          <h1 className="font-display text-4xl sm:text-5xl leading-[1.1] text-ink">
+            Егор Викторович
+            <br />
+            Андреев
           </h1>
-          <p className="mt-4 text-neutral-600 text-lg">
+          <p className="mt-5 text-text-muted text-lg max-w-md leading-relaxed">
             Снятие запрета на въезд, отмена депортации и выдворения,
-            оформление РВП, ВНЖ и гражданства России. Более 10 лет практики
-            в Москве.
+            оформление РВП, ВНЖ и гражданства России.
           </p>
-          <div className="mt-6 flex gap-3">
+          <div className="mt-8 flex gap-3">
             <a
               href="tel:+79994702020"
-              className="rounded-md bg-neutral-900 px-5 py-3 text-white font-medium hover:bg-neutral-700"
+              className="rounded-none bg-ink px-6 py-3 text-paper font-medium hover:bg-seal transition-colors"
             >
               Позвонить
             </a>
             <Link
               href="/kontakty"
-              className="rounded-md border border-neutral-300 px-5 py-3 font-medium hover:bg-neutral-50"
+              className="rounded-none border border-ink px-6 py-3 font-medium text-ink hover:border-seal hover:text-seal transition-colors"
             >
               Написать
             </Link>
           </div>
         </div>
-        <div className="aspect-video rounded-lg bg-neutral-100 flex items-center justify-center text-neutral-400 text-sm">
-          [ видео urist-long.mp4 ]
+        <div className="flex justify-center md:justify-end">
+          <div className="w-56 h-56 sm:w-64 sm:h-64">
+            <Seal />
+          </div>
         </div>
       </section>
 
       {/* Услуги */}
-      <section className="mx-auto max-w-6xl px-4 py-10">
-        <h2 className="text-2xl font-semibold mb-6">Услуги</h2>
-        <div className="grid sm:grid-cols-2 lg:grid-cols-4 gap-5">
+      <section className="mx-auto max-w-6xl px-4 py-14">
+        <SectionLabel>Услуги</SectionLabel>
+        <div className="grid sm:grid-cols-2 lg:grid-cols-4 gap-px bg-line">
           {services.map((s) => (
             <Link
               key={s.href}
               href={s.href}
-              className="block rounded-lg border border-neutral-200 p-5 hover:border-neutral-400 transition-colors"
+              className="block bg-paper-raised p-6 hover:bg-paper transition-colors"
             >
-              <h3 className="font-medium mb-2">{s.title}</h3>
-              <p className="text-sm text-neutral-600">{s.text}</p>
+              <h3 className="font-display text-lg text-ink mb-2">{s.title}</h3>
+              <p className="text-sm text-text-muted leading-relaxed">{s.text}</p>
             </Link>
           ))}
         </div>
       </section>
 
       {/* Компетенции */}
-      <section className="bg-neutral-50 py-10">
+      <section className="py-14" style={{ background: "var(--ink)" }}>
         <div className="mx-auto max-w-6xl px-4">
-          <h2 className="text-2xl font-semibold mb-6">Компетенции</h2>
-          <ul className="grid sm:grid-cols-2 gap-3 text-neutral-700">
+          <div className="mb-4">
+            <div className="letterhead-rule w-12 mb-2" style={{ borderColor: "var(--brass)" }} />
+            <span className="eyebrow" style={{ color: "var(--brass)" }}>
+              Компетенции
+            </span>
+          </div>
+          <ul className="grid sm:grid-cols-2 gap-x-8 gap-y-3 text-paper/90">
             {[
               "Представление интересов иностранцев в судах РФ и за границей",
               "Оформление РВП, ВНЖ, гражданства России",
               "Снятие установленного запрета на въезд",
-              "Отмена/обжалование выдворения",
+              "Отмена и обжалование выдворения",
               "Отмена депортации",
               "Оспаривание действий отдела миграции МВД в суде",
               "Сопровождение при оформлении разрешения на трудоустройство",
               "Представление интересов в кассации, апелляции, Верховном Суде РФ",
             ].map((item) => (
-              <li key={item} className="flex gap-2 text-sm">
-                <span className="text-neutral-400">•</span>
+              <li key={item} className="flex gap-3 text-sm leading-relaxed">
+                <span style={{ color: "var(--brass)" }}>§</span>
                 {item}
               </li>
             ))}
@@ -114,40 +133,39 @@ export default function Home() {
       </section>
 
       {/* Оплата */}
-      <section className="mx-auto max-w-6xl px-4 py-10">
-        <h2 className="text-2xl font-semibold mb-6">Условия оплаты</h2>
-        <div className="grid sm:grid-cols-3 gap-5">
+      <section className="mx-auto max-w-6xl px-4 py-14">
+        <SectionLabel>Условия оплаты</SectionLabel>
+        <div className="grid sm:grid-cols-3 gap-px bg-line">
           {[
             ["30%", "При подписании договора"],
             ["30%", "За 5 дней до первого судебного заседания"],
             ["40%", "После получения судебного решения"],
           ].map(([pct, desc]) => (
-            <div
-              key={desc}
-              className="rounded-lg border border-neutral-200 p-5"
-            >
-              <p className="text-2xl font-semibold">{pct}</p>
-              <p className="text-sm text-neutral-600 mt-1">{desc}</p>
+            <div key={desc} className="bg-paper-raised p-6">
+              <p className="font-display text-3xl text-ink">{pct}</p>
+              <p className="text-sm text-text-muted mt-2">{desc}</p>
             </div>
           ))}
         </div>
-        <p className="text-sm text-neutral-500 mt-4">
+        <p className="text-sm text-text-muted mt-5 max-w-xl">
           Возможен вариант «всё под ключ»: один платёж, включающий все
           расходы до вынесения решения суда.
         </p>
       </section>
 
       {/* Типовые ситуации */}
-      <section className="bg-neutral-50 py-10">
+      <section className="py-14" style={{ background: "var(--paper-raised)" }}>
         <div className="mx-auto max-w-6xl px-4">
-          <h2 className="text-2xl font-semibold mb-6">
-            Когда нужна помощь миграционного юриста
-          </h2>
-          <div className="grid sm:grid-cols-3 gap-5">
+          <SectionLabel>Когда нужна помощь миграционного юриста</SectionLabel>
+          <div className="grid sm:grid-cols-3 gap-8 mt-6">
             {situations.map((s) => (
-              <div key={s.title} className="rounded-lg bg-white p-5 border border-neutral-200">
-                <h3 className="font-medium mb-2">{s.title}</h3>
-                <p className="text-sm text-neutral-600">{s.text}</p>
+              <div key={s.title}>
+                <h3 className="font-display text-lg text-ink mb-2">
+                  {s.title}
+                </h3>
+                <p className="text-sm text-text-muted leading-relaxed">
+                  {s.text}
+                </p>
               </div>
             ))}
           </div>
@@ -155,27 +173,26 @@ export default function Home() {
       </section>
 
       {/* Контакты */}
-      <section className="mx-auto max-w-6xl px-4 py-10">
-        <h2 className="text-2xl font-semibold mb-6">Контакты</h2>
-        <div className="grid md:grid-cols-2 gap-8 items-start">
-          <div className="space-y-2 text-neutral-700">
-            <p>119017, г. Москва, Малая Ордынка, 5/6 стр. 4, офис 26</p>
-            <p>
+      <section className="mx-auto max-w-6xl px-4 py-14">
+        <SectionLabel>Контакты</SectionLabel>
+        <div className="grid md:grid-cols-[1fr_auto] gap-8 items-start">
+          <div className="space-y-2 text-text">
+            <p className="font-display text-lg">
+              119017, г. Москва, Малая Ордынка, 5/6 стр. 4, офис 26
+            </p>
+            <p className="text-text-muted">
               Тел.:{" "}
-              <a href="tel:+79994702020" className="underline">
+              <a href="tel:+79994702020" className="text-seal hover:underline">
                 +7 (999) 470-20-20
               </a>{" "}
-              (в т.ч. WhatsApp)
+              (в том числе WhatsApp)
             </p>
             <Link
               href="/kontakty"
-              className="inline-block mt-3 text-sm underline text-neutral-600"
+              className="inline-block mt-3 text-sm text-brass-deep hover:text-seal underline underline-offset-4"
             >
               Форма обратной связи →
             </Link>
-          </div>
-          <div className="aspect-[4/3] rounded-lg bg-neutral-100 flex items-center justify-center text-neutral-400 text-sm">
-            [ фото + ссылка на YouTube-канал ]
           </div>
         </div>
       </section>

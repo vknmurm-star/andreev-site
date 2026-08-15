@@ -5,6 +5,28 @@ Next.js App Router + Tailwind. Все 10 основных страниц нап�
 актуализированы, тире убраны по всему тексту (кроме дефисов в номере
 телефона и числового диапазона в /privacy).
 
+## Дизайн-система
+
+Первая версия сайта была слишком "сырой" (дефолтный minimal-стиль без
+характера) — переработана под тему миграционного права: бумажный фон,
+чернильно-синий + приглушённая латунь + сургучно-красный акцент,
+серифный дисплейный шрифт (PT Serif) для заголовков, Inter для текста,
+JetBrains Mono для мелких деталей (даты, эйбраузы, номера статей закона).
+Фирменный элемент — SVG-"печать" в hero (`src/components/Seal.tsx`) с
+текстом по окружности, обыгрывающая тему официальных документов/печатей
+МВД, которая буквально фигурирует в контенте оригинального сайта.
+
+Шрифты подключены через `<link>` в `layout.tsx` (не через `next/font`) —
+так они загружаются в браузере, а не на этапе сборки, что важно на
+машинах с ограниченным доступом к fonts.googleapis.com при билде.
+
+Токены цвета и типографии — в `globals.css` (`--paper`, `--ink`, `--brass`,
+`--seal`, `--font-display`, `--font-mono` и т.д.). `.prose` стилизован
+вручную (без `@tailwindcss/typography`, плагин не установлен).
+
+Если продолжите донастройку дизайна — держитесь этой системы токенов,
+не возвращайтесь к дефолтным neutral-* классам Tailwind.
+
 ## Блог / судебная практика
 
 Реализовано как markdown-коллекция:
@@ -19,28 +41,30 @@ Next.js App Router + Tailwind. Все 10 основных страниц нап�
 материалов) переносится тем же способом — просто добавлением новых .md
 файлов в `content/posts/`, дополнительный код не нужен.
 
-## Decap CMS — требует доп. настройки перед использованием
+## Decap CMS
 
-`public/admin/config.yml` и `public/admin/index.html` готовы, коллекция
-`posts` указывает на `content/posts/`. НО:
+`public/admin/config.yml` и `public/admin/index.html` настроены, коллекция
+`posts` указывает на `content/posts/`. GitHub OAuth App создан, Client
+ID/Secret прописаны в `.env.local` на сервере, `/api/auth` подтверждённо
+редиректит на GitHub и распознаётся приложением "andreev-site" (значит
+Client ID и redirect_uri верны) — полный цикл логина (включая callback →
+postMessage в CMS) на момент написания ещё дожидается финальной проверки
+через реальный вход пользователя.
 
-1. **Нужно создать реальное GitHub OAuth App** (Settings → Developer
-   settings → OAuth Apps → New OAuth App):
-   - Homepage URL: `https://andreev.an51.su`
-   - Authorization callback URL: `https://andreev.an51.su/api/callback`
-2. **Прописать на сервере в `.env.local`** (НЕ в git):
-   ```
-   GITHUB_OAUTH_CLIENT_ID=...
-   GITHUB_OAUTH_CLIENT_SECRET=...
-   SITE_URL=https://andreev.an51.su
-   ```
-3. `src/app/api/auth/route.ts` и `src/app/api/callback/route.ts` уже
-   написаны по стандартному паттерну GitHub OAuth для Decap CMS (redirect
-   → обмен code на token → postMessage в окно с CMS), но **не протестированы
-   вживую** — при первом использовании `/admin` на живом сайте нужно
-   проверить, что логин через GitHub реально работает, и при ошибках
-   сверяться с диагностикой в skill vds-nextjs-deploy (раздел 6).
-4. После настройки — доступ к CMS по адресу `https://andreev.an51.su/admin`.
+**Критично — два фикса в `public/admin/index.html` и `next.config.ts`,
+без которых `/admin` (без слэша) отдаёт 404 при загрузке `config.yml`:**
+1. `next.config.ts` должен содержать rewrite `/admin` → `/admin/index.html`
+   (иначе Next.js не резолвит путь без расширения из `public/`).
+2. `public/admin/index.html` должен содержать
+   `<link href="/admin/config.yml" type="text/yaml" rel="cms-config-url" />`
+   в `<head>` — без абсолютного пути Decap CMS резолвит `config.yml`
+   относительно URL в адресной строке (`/admin` без слэша → уходит в
+   `/config.yml` в корне сайта, 404).
+
+Оба фикса уже дважды затирались при накатывании обновлений дизайна/контента
+из внешнего источника (см. следующий раздел про архивы) — **при любой
+следующей передаче файлов проверяй, что эти два места на месте**, прежде
+чем коммитить.
 
 ## Деплой
 

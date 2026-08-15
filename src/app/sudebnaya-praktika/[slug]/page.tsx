@@ -43,7 +43,7 @@ export default async function Page({
 
   return (
     <article className="mx-auto max-w-3xl px-4 py-14 prose prose-neutral">
-      <p className="text-sm text-neutral-400 not-prose mb-2">
+      <p className="text-sm text-brass not-prose mb-2">
         {formatDate(post.date)}
       </p>
       <h1>{post.title}</h1>

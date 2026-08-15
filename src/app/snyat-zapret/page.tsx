@@ -56,7 +56,7 @@ export default function Page() {
         <li>Необходимость экстренного лечения в РФ</li>
         <li>Очное обучение в вузе России</li>
       </ul>
-      <p className="text-sm text-neutral-500">
+      <p className="text-sm text-text-muted">
         При этом важно, чтобы имеющиеся штрафы и судимости были полностью
         погашены.
       </p>
@@ -72,9 +72,9 @@ export default function Page() {
         <li>Получение и, при необходимости, обжалование решения суда</li>
       </ul>
 
-      <div className="not-prose mt-10 rounded-lg border border-neutral-200 p-6">
+      <div className="not-prose mt-10 rounded-lg border border-line p-6">
         <p className="font-medium mb-2">119017, г. Москва, Малая Ордынка, 5/6 стр. 4, офис 26</p>
-        <p className="text-sm text-neutral-600 mb-4">
+        <p className="text-sm text-text-muted mb-4">
           +7 (999) 470-20-20 (в том числе WhatsApp)
         </p>
         <Link href="/kontakty" className="text-sm underline">
