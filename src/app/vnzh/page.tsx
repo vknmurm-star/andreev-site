@@ -1,3 +1,11 @@
+import type { Metadata } from "next";
+
+export const metadata: Metadata = {
+  title: "Получить вид на жительство (ВНЖ) | AndreevEgor.ru",
+  description:
+    "Как получить вид на жительство ВНЖ в России РФ: документы, порядок получения, основания для отказа. Консультация миграционного юриста.",
+};
+
 export default function Page() {
   return (
     <article className="mx-auto max-w-3xl px-4 py-14 prose prose-neutral">

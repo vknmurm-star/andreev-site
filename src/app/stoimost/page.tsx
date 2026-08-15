@@ -1,3 +1,11 @@
+import type { Metadata } from "next";
+
+export const metadata: Metadata = {
+  title: "Стоимость услуг юриста в Москве | AndreevEgor.ru",
+  description:
+    "Расценки на миграционные и юридические услуги: консультации, ведение дел в суде, оформление РВП, ВНЖ, гражданства.",
+};
+
 type Row = [string, string];
 
 function Table({ title, rows }: { title: string; rows: Row[] }) {

@@ -1,3 +1,11 @@
+import type { Metadata } from "next";
+
+export const metadata: Metadata = {
+  title: "Политика обработки персональных данных | AndreevEgor.ru",
+  description:
+    "Политика обработки персональных данных сайта andreevegor.ru в соответствии с 152-ФЗ.",
+};
+
 export default function Page() {
   return (
     <article className="mx-auto max-w-3xl px-4 py-14 prose prose-neutral prose-sm">

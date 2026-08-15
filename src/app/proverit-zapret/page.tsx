@@ -1,3 +1,11 @@
+import type { Metadata } from "next";
+
+export const metadata: Metadata = {
+  title: "Проверить запрет на въезд в Россию РФ",
+  description:
+    "Как проверить наличие запрета на въезд в Россию через МВД России. Получение официального документа с указанием причины и срока запрета.",
+};
+
 export default function Page() {
   return (
     <article className="mx-auto max-w-3xl px-4 py-14 prose prose-neutral">

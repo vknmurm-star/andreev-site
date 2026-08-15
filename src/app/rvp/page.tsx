@@ -1,3 +1,11 @@
+import type { Metadata } from "next";
+
+export const metadata: Metadata = {
+  title: "Получить РВП — разрешение на временное проживание | AndreevEgor.ru",
+  description:
+    "Как получить РВП в России: по квоте и без квоты, документы, пошаговая инструкция. Консультация миграционного юриста Егора Андреева.",
+};
+
 export default function Page() {
   return (
     <article className="mx-auto max-w-3xl px-4 py-14 prose prose-neutral">
