@@ -195,7 +195,7 @@ export default function Home() {
       {/* Контакты */}
       <section className="mx-auto max-w-6xl px-4 py-14">
         <SectionLabel>Контакты</SectionLabel>
-        <div className="grid md:grid-cols-[1fr_auto] gap-8 items-start">
+        <div className="grid md:grid-cols-[1fr_1.4fr] gap-8 items-center">
           <div className="space-y-2 text-text">
             <p className="font-display text-lg">
               119017, г. Москва, Малая Ордынка, 5/6 стр. 4, офис 26
@@ -214,13 +214,13 @@ export default function Home() {
               Форма обратной связи →
             </Link>
           </div>
-          <div className="relative w-full sm:w-72 aspect-[16/9] bg-paper-raised border border-line overflow-hidden">
+          <div className="relative w-full aspect-[16/9] bg-paper-raised border border-line overflow-hidden">
             <Image
               src="/images/kontakty-banner.jpg"
               alt="Миграционный юрист Егор Викторович Андреев, тел. 8-999-470-20-20"
               fill
               className="object-cover"
-              sizes="(max-width: 640px) 100vw, 288px"
+              sizes="(max-width: 768px) 100vw, 500px"
             />
           </div>
         </div>
