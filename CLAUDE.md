@@ -1,34 +1,64 @@
 # andreev-site
 
 Новый сайт для andreevegor.ru (миграционный юрист Егор Андреев).
-Next.js App Router + Tailwind. Контент 10 из 11 страниц перенесён и
-актуализирован вручную (см. историю задачи). Раздел /sudebnaya-praktika
-пока содержит только 5 демо-статей — полный архив (80+ материалов)
-переносится отдельным этапом, желательно через CMS-коллекцию (Decap CMS),
-а не хардкодом в компоненте.
+Next.js App Router + Tailwind. Все 10 основных страниц наполнены и
+актуализированы, тире убраны по всему тексту (кроме дефисов в номере
+телефона и числового диапазона в /privacy).
+
+## Блог / судебная практика
+
+Реализовано как markdown-коллекция:
+- `content/posts/*.md` — файлы статей (frontmatter: title, date, excerpt;
+  тело — markdown после frontmatter)
+- `src/lib/posts.ts` — чтение и парсинг файлов через gray-matter
+- `/sudebnaya-praktika` — листинг, читает файлы напрямую (не хардкод)
+- `/sudebnaya-praktika/[slug]` — страница отдельной статьи, рендерит
+  markdown через `marked`
+
+Сейчас перенесено 5 статей из оригинального сайта. Полный архив (80+
+материалов) переносится тем же способом — просто добавлением новых .md
+файлов в `content/posts/`, дополнительный код не нужен.
+
+## Decap CMS — требует доп. настройки перед использованием
+
+`public/admin/config.yml` и `public/admin/index.html` готовы, коллекция
+`posts` указывает на `content/posts/`. НО:
+
+1. **Нужно создать реальное GitHub OAuth App** (Settings → Developer
+   settings → OAuth Apps → New OAuth App):
+   - Homepage URL: `https://andreev.an51.su`
+   - Authorization callback URL: `https://andreev.an51.su/api/callback`
+2. **Прописать на сервере в `.env.local`** (НЕ в git):
+   ```
+   GITHUB_OAUTH_CLIENT_ID=...
+   GITHUB_OAUTH_CLIENT_SECRET=...
+   SITE_URL=https://andreev.an51.su
+   ```
+3. `src/app/api/auth/route.ts` и `src/app/api/callback/route.ts` уже
+   написаны по стандартному паттерну GitHub OAuth для Decap CMS (redirect
+   → обмен code на token → postMessage в окно с CMS), но **не протестированы
+   вживую** — при первом использовании `/admin` на живом сайте нужно
+   проверить, что логин через GitHub реально работает, и при ошибках
+   сверяться с диагностикой в skill vds-nextjs-deploy (раздел 6).
+4. После настройки — доступ к CMS по адресу `https://andreev.an51.su/admin`.
 
 ## Деплой
-Развёрнуто на VDS (kvm.an51.su, root по SSH-ключу) по процессу из skill
-vds-nextjs-deploy:
-- Репозиторий: https://github.com/vknmurm-star/andreev-site (main)
-- Каталог на сервере: `/var/www/andreev-site`
-- PM2-процесс: `andreev-site`, слушает `PORT=3003` (3000-3002 заняты
-  site-001/market-store/finance-001 на этом же VDS)
-- Домен: `https://andreev.an51.su` (HTTPS через certbot, стандартный
-  порт 443, редирект с 80 настроен certbot'ом автоматически)
-- nginx-конфиг: `/etc/nginx/sites-available/andreev-site`
-- Автодеплой: cron `*/2 * * * * /var/www/andreev-site/auto-deploy-check.sh`
-  подтягивает новые коммиты из GitHub и гоняет `deploy.sh` (flock +
-  git pull + npm install + npm run build + pm2 restart)
 
-CMS (Decap) на этом сайте пока не подключена — раздел
-`/sudebnaya-praktika` с полным архивом статей планируется перенести
-через неё отдельным этапом (см. ниже). Когда будет подключаться —
-использовать ту же схему GitHub OAuth + `SITE_URL`, что и в site-001
-(см. skill vds-nextjs-deploy, раздел 6).
+Процесс из skill vds-nextjs-deploy. Автодеплоя через cron нет (решили не
+настраивать) — обновления на VDS накатываются вручную: git pull, npm
+install, npm run build, pm2 restart andreev-site.
+
+## Важно про git при передаче файлов через архив
+
+Если получаете обновления этого проекта архивом (не через git push/pull),
+НЕ распаковывайте архив с включённым в него `.git` поверх рабочей копии —
+это уже дважды приводило к порче `origin` и расхождению веток main/master.
+Применяйте только файлы кода, коммитьте и пушьте сами через уже
+настроенный локальный репозиторий.
 
 ## Известное
-- Next/font/google требует доступа к fonts.googleapis.com — на сборочной
+
+- next/font/google требует доступа к fonts.googleapis.com — на сборочной
   машине с ограниченной сетью это упадёт; на VDS с обычным интернетом
   можно вернуть next/font (сейчас используется системный font-sans).
 - Оригинальный сайт (WordPress) содержал битую ссылку /legal-services/

@@ -1,4 +1,6 @@
 import type { Metadata } from "next";
+import Link from "next/link";
+import { getAllPosts } from "@/lib/posts";
 
 export const metadata: Metadata = {
   title: "Судебная практика | Миграционный юрист Егор Андреев",
@@ -6,56 +8,40 @@ export const metadata: Metadata = {
     "Разборы реальных дел и правовые гиды по миграционному законодательству от юриста Егора Андреева.",
 };
 
-const demoPosts = [
-  {
-    title: "Может ли иностранец быть самозанятым в России в 2026 году",
-    date: "15.06.2026",
-    excerpt:
-      "Полный правовой гид по НПД: кто может работать как самозанятый, нужно ли получать РВП или ВНЖ, как подтвердить доходы для МВД.",
-  },
-  {
-    title: "Как переехать в Россию и легализовать автомобиль в 2026",
-    date: "07.06.2026",
-    excerpt:
-      "Основные варианты легализации пребывания, порядок растаможки автомобиля и льготы для переезжающих на ПМЖ.",
-  },
-  {
-    title: "Статус репатриация / репатриант в РФ в 2026 году",
-    date: "28.05.2026",
-    excerpt:
-      "Как работает госпрограмма переселения соотечественников, какие документы нужны и как получить ВНЖ и гражданство.",
-  },
-  {
-    title: "Легализоваться в России через фиктивный брак не выйдет",
-    date: "25.03.2026",
-    excerpt:
-      "Почему схема с фиктивным браком больше не работает и какие нормы её пресекают.",
-  },
-  {
-    title: "Как исключить из реестра контролируемых лиц иностранных граждан",
-    date: "26.10.2025",
-    excerpt:
-      "Что такое реестр и режим высылки, основания включения и пошаговая инструкция по исключению.",
-  },
-];
+function formatDate(iso: string) {
+  const d = new Date(iso);
+  return d.toLocaleDateString("ru-RU", {
+    day: "2-digit",
+    month: "2-digit",
+    year: "numeric",
+  });
+}
 
 export default function Page() {
+  const posts = getAllPosts();
+
   return (
     <section className="mx-auto max-w-3xl px-4 py-14">
       <h1 className="text-3xl font-semibold mb-2">Судебная практика</h1>
       <p className="text-neutral-500 mb-10">
         Разборы реальных дел и правовые гиды по миграционному
         законодательству. Полный архив (80+ материалов) переносится на новую
-        платформу поэтапно, ниже примеры оформления.
+        платформу поэтапно, ниже статьи, уже доступные на сайте.
       </p>
       <div className="space-y-6">
-        {demoPosts.map((post) => (
-          <article
-            key={post.title}
-            className="border-b border-neutral-200 pb-6"
-          >
-            <p className="text-xs text-neutral-400 mb-1">{post.date}</p>
-            <h2 className="text-lg font-medium mb-2">{post.title}</h2>
+        {posts.map((post) => (
+          <article key={post.slug} className="border-b border-neutral-200 pb-6">
+            <p className="text-xs text-neutral-400 mb-1">
+              {formatDate(post.date)}
+            </p>
+            <h2 className="text-lg font-medium mb-2">
+              <Link
+                href={`/sudebnaya-praktika/${post.slug}`}
+                className="hover:underline"
+              >
+                {post.title}
+              </Link>
+            </h2>
             <p className="text-sm text-neutral-600">{post.excerpt}</p>
           </article>
         ))}

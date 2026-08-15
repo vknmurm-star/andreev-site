@@ -1,0 +1,21 @@
+backend:
+  name: github
+  repo: vknmurm-star/andreev-site
+  branch: main
+  base_url: https://andreev.an51.su
+  auth_endpoint: api/auth
+
+media_folder: "public/images/posts"
+public_folder: "/images/posts"
+
+collections:
+  - name: "posts"
+    label: "Судебная практика (статьи)"
+    folder: "content/posts"
+    create: true
+    slug: "{{slug}}"
+    fields:
+      - { label: "Заголовок", name: "title", widget: "string" }
+      - { label: "Дата", name: "date", widget: "datetime", format: "YYYY-MM-DD", date_format: "YYYY-MM-DD", time_format: false }
+      - { label: "Краткое описание", name: "excerpt", widget: "text" }
+      - { label: "Текст статьи", name: "body", widget: "markdown", body: true }
