@@ -115,9 +115,16 @@ body {
   margin-bottom: 1.5rem;
   font-size: 0.9rem;
 }
-.prose table td {
+.prose table td,
+.prose table th {
   border-bottom: 1px solid var(--line);
   padding: 0.5rem 0.75rem;
+}
+.prose table th {
+  text-align: left;
+  font-weight: 600;
+  color: var(--ink);
+  border-bottom-color: var(--brass);
 }
 .prose strong {
   color: var(--ink);
