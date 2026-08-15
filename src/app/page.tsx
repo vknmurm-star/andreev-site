@@ -214,13 +214,13 @@ export default function Home() {
               Форма обратной связи →
             </Link>
           </div>
-          <div className="relative w-40 aspect-[4/5] bg-paper-raised border border-line overflow-hidden">
+          <div className="relative w-full sm:w-72 aspect-[16/9] bg-paper-raised border border-line overflow-hidden">
             <Image
-              src="/images/egor-andreev.jpg"
-              alt="Егор Викторович Андреев"
+              src="/images/kontakty-banner.jpg"
+              alt="Миграционный юрист Егор Викторович Андреев, тел. 8-999-470-20-20"
               fill
               className="object-cover"
-              sizes="160px"
+              sizes="(max-width: 640px) 100vw, 288px"
             />
           </div>
         </div>
