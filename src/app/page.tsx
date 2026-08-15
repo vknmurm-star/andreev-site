@@ -51,7 +51,7 @@ export default function Home() {
   return (
     <>
       {/* Hero */}
-      <section className="mx-auto max-w-6xl px-4 py-16 grid md:grid-cols-[1.2fr_1fr] gap-12 items-center">
+      <section className="mx-auto max-w-6xl px-4 py-16 grid md:grid-cols-[1.6fr_1fr] gap-12 items-center">
         <div>
           <p className="eyebrow mb-3">Адвокат по миграционному праву · Москва</p>
           <h1 className="font-display text-4xl sm:text-5xl leading-[1.1] text-ink">
@@ -78,18 +78,18 @@ export default function Home() {
             </Link>
           </div>
         </div>
-        <div className="flex justify-center md:justify-end">
-          <div className="relative w-64 sm:w-72">
+        <div className="flex justify-center">
+          <div className="relative w-48 sm:w-56">
             <div className="aspect-[4/5] bg-paper-raised border border-line flex items-center justify-center overflow-hidden">
               <span className="text-text-muted text-sm text-center px-6">
                 [ фото Е.В. Андреева ]
               </span>
             </div>
             <div
-              className="absolute -bottom-5 -left-5 w-24 h-24 bg-paper border border-brass rounded-full flex flex-col items-center justify-center text-center shadow-sm"
+              className="absolute -bottom-4 -right-4 w-20 h-20 bg-paper border border-brass rounded-full flex flex-col items-center justify-center text-center shadow-sm"
             >
-              <span className="font-display text-xl text-ink leading-none">10+</span>
-              <span className="font-mono text-[8px] tracking-wide text-text-muted mt-1">
+              <span className="font-display text-lg text-ink leading-none">10+</span>
+              <span className="font-mono text-[7px] tracking-wide text-text-muted mt-1">
                 ЛЕТ ПРАКТИКИ
               </span>
             </div>

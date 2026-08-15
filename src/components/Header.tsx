@@ -14,24 +14,13 @@ const menu = [
 export default function Header() {
   return (
     <header className="bg-paper sticky top-0 z-40">
-      <div className="mx-auto max-w-6xl px-4 py-4 flex items-center justify-between gap-6">
+      <div className="mx-auto max-w-6xl px-4 pt-4 flex items-center justify-between gap-6">
         <Link href="/" className="flex items-baseline gap-3 shrink-0">
           <span className="font-display text-xl text-ink leading-none">
             Андреев Егор
           </span>
           <span className="hidden sm:inline eyebrow">Миграционный юрист</span>
         </Link>
-        <nav className="hidden lg:flex items-center gap-5 text-[13px] text-ink-soft">
-          {menu.map((item) => (
-            <Link
-              key={item.href}
-              href={item.href}
-              className="hover:text-seal whitespace-nowrap transition-colors"
-            >
-              {item.label}
-            </Link>
-          ))}
-        </nav>
         <a
           href="tel:+79994702020"
           className="shrink-0 rounded-none border border-ink bg-ink px-4 py-2 text-sm font-medium text-paper hover:bg-seal hover:border-seal transition-colors"
@@ -39,6 +28,17 @@ export default function Header() {
           +7 999 470-20-20
         </a>
       </div>
+      <nav className="mx-auto max-w-6xl px-4 py-3 flex flex-wrap items-center gap-x-5 gap-y-2 text-[13px] text-ink-soft">
+        {menu.map((item) => (
+          <Link
+            key={item.href}
+            href={item.href}
+            className="hover:text-seal whitespace-nowrap transition-colors"
+          >
+            {item.label}
+          </Link>
+        ))}
+      </nav>
       <div className="letterhead-rule" style={{ borderColor: "var(--line)" }} />
     </header>
   );
