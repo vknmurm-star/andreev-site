@@ -64,7 +64,7 @@ export default function Home() {
             Снятие запрета на въезд, отмена депортации и выдворения,
             оформление РВП, ВНЖ и гражданства России.
           </p>
-          <div className="mt-8 flex justify-center gap-3">
+          <div className="mt-8 flex gap-3">
             <a
               href="tel:+79994702020"
               className="rounded-none bg-ink px-6 py-3 text-paper font-medium hover:bg-seal transition-colors"
@@ -84,14 +84,14 @@ export default function Home() {
           </p>
         </div>
         <div className="flex justify-start">
-          <div className="relative w-80 sm:w-96">
+          <div className="relative w-72 sm:w-80">
             <div className="relative aspect-[4/5] bg-paper-raised border border-line overflow-hidden">
               <Image
                 src="/images/egor-andreev.jpg"
                 alt="Егор Викторович Андреев"
                 fill
                 className="object-cover"
-                sizes="(max-width: 640px) 320px, 384px"
+                sizes="(max-width: 640px) 288px, 320px"
                 priority
               />
             </div>
