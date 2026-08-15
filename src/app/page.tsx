@@ -52,7 +52,7 @@ export default function Home() {
   return (
     <>
       {/* Hero */}
-      <section className="mx-auto max-w-6xl px-4 py-16 grid md:grid-cols-[1.3fr_1fr] gap-10 items-center">
+      <section className="mx-auto max-w-6xl px-4 pt-16 pb-8 grid md:grid-cols-[1.3fr_1fr] gap-10 items-center">
         <div>
           <p className="eyebrow mb-3">Адвокат по миграционному праву · Москва</p>
           <h1 className="font-display text-4xl sm:text-5xl leading-[1.1] text-ink">
@@ -100,7 +100,7 @@ export default function Home() {
       </section>
 
       {/* Услуги */}
-      <section className="mx-auto max-w-6xl px-4 py-14">
+      <section className="mx-auto max-w-6xl px-4 pt-2 pb-14">
         <SectionLabel>Услуги</SectionLabel>
         <div className="grid sm:grid-cols-2 lg:grid-cols-4 gap-px bg-line">
           {services.map((s) => (
