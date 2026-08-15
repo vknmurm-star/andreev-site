@@ -89,7 +89,7 @@ export default function Home() {
               className="absolute -bottom-4 -right-4 w-20 h-20 bg-paper border border-brass rounded-full flex flex-col items-center justify-center text-center shadow-sm"
             >
               <span className="font-display text-lg text-ink leading-none">10+</span>
-              <span className="font-mono text-[7px] tracking-wide text-text-muted mt-1">
+              <span className="font-sans text-[9px] font-medium tracking-wide text-text-muted mt-1">
                 ЛЕТ ПРАКТИКИ
               </span>
             </div>
