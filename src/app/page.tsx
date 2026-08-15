@@ -1,4 +1,5 @@
 import Link from "next/link";
+import Image from "next/image";
 
 const services = [
   {
@@ -80,10 +81,15 @@ export default function Home() {
         </div>
         <div className="flex justify-start">
           <div className="relative w-64 sm:w-72">
-            <div className="aspect-[4/5] bg-paper-raised border border-line flex items-center justify-center overflow-hidden">
-              <span className="text-text-muted text-sm text-center px-6">
-                [ фото Е.В. Андреева ]
-              </span>
+            <div className="relative aspect-[4/5] bg-paper-raised border border-line overflow-hidden">
+              <Image
+                src="/images/egor-andreev.jpg"
+                alt="Егор Викторович Андреев"
+                fill
+                className="object-cover"
+                sizes="(max-width: 640px) 256px, 288px"
+                priority
+              />
             </div>
             <div
               className="absolute -bottom-5 -right-5 w-24 h-24 bg-paper border border-brass rounded-full flex flex-col items-center justify-center text-center shadow-sm"
@@ -198,10 +204,14 @@ export default function Home() {
               Форма обратной связи →
             </Link>
           </div>
-          <div className="w-40 aspect-[4/5] bg-paper-raised border border-line flex items-center justify-center">
-            <span className="text-text-muted text-xs text-center px-3">
-              [ фото ]
-            </span>
+          <div className="relative w-40 aspect-[4/5] bg-paper-raised border border-line overflow-hidden">
+            <Image
+              src="/images/egor-andreev.jpg"
+              alt="Егор Викторович Андреев"
+              fill
+              className="object-cover"
+              sizes="160px"
+            />
           </div>
         </div>
       </section>

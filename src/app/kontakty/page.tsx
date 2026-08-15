@@ -1,4 +1,5 @@
 import type { Metadata } from "next";
+import Image from "next/image";
 
 export const metadata: Metadata = {
   title: "Контакты | Миграционный юрист Егор Андреев",
@@ -29,8 +30,14 @@ export default function Page() {
             </a>
           </p>
         </div>
-        <div className="aspect-square border border-line bg-paper-raised flex items-center justify-center text-text-muted text-sm">
-          [ фото юриста ]
+        <div className="relative aspect-square border border-line bg-paper-raised overflow-hidden">
+          <Image
+            src="/images/egor-andreev.jpg"
+            alt="Егор Викторович Андреев"
+            fill
+            className="object-cover"
+            sizes="(max-width: 640px) 100vw, 400px"
+          />
         </div>
       </div>
 
