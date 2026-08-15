@@ -1,3 +1,11 @@
+import type { Metadata } from "next";
+
+export const metadata: Metadata = {
+  title: "Отменить депортацию и выдворение из России | AndreevEgor.ru",
+  description:
+    "Как отменить депортацию и выдворение из России РФ. Апелляционная жалоба, судебное обжалование. Консультация миграционного юриста Егора Андреева.",
+};
+
 export default function Page() {
   return (
     <article className="mx-auto max-w-3xl px-4 py-14 prose prose-neutral">

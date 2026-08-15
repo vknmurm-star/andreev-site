@@ -1,3 +1,11 @@
+import type { Metadata } from "next";
+
+export const metadata: Metadata = {
+  title: "Получить гражданство России РФ | AndreevEgor.ru",
+  description:
+    "Как получить гражданство России в общем и упрощённом порядке. Документы, основания, восстановление в гражданстве. Консультация юриста.",
+};
+
 export default function Page() {
   return (
     <article className="mx-auto max-w-3xl px-4 py-14 prose prose-neutral">

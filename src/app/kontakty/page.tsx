@@ -1,3 +1,11 @@
+import type { Metadata } from "next";
+
+export const metadata: Metadata = {
+  title: "Контакты | Миграционный юрист Егор Андреев",
+  description:
+    "Контакты миграционного юриста Егора Андреева в Москве: адрес, телефон, форма обратной связи. Консультация по миграционным вопросам.",
+};
+
 export default function Page() {
   return (
     <section className="mx-auto max-w-3xl px-4 py-14">

@@ -1,3 +1,11 @@
+import type { Metadata } from "next";
+
+export const metadata: Metadata = {
+  title: "Снять запрет на въезд в Россию | Миграционный юрист Е.В. Андреев",
+  description:
+    "Миграционный юрист Е.В. Андреев поможет снять запрет на въезд в Россию. Консультация, запрос в миграционные органы, обжалование в суде. Звоните +7 999 470-20-20.",
+};
+
 import Link from "next/link";
 
 export default function Page() {
