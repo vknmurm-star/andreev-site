@@ -46,12 +46,27 @@ SVG-"печать" (`src/components/Seal.tsx`) использовалась в h
 ## Decap CMS
 
 `public/admin/config.yml` и `public/admin/index.html` настроены, коллекция
-`posts` указывает на `content/posts/`. GitHub OAuth App создан, Client
-ID/Secret прописаны в `.env.local` на сервере, `/api/auth` подтверждённо
-редиректит на GitHub и распознаётся приложением "andreev-site" (значит
-Client ID и redirect_uri верны) — полный цикл логина (включая callback →
-postMessage в CMS) на момент написания ещё дожидается финальной проверки
-через реальный вход пользователя.
+`posts` указывает на `content/posts/`.
+
+**Важно: сайт развёрнут на ДВУХ серверах из одной ветки `main`** —
+`kvm.an51.su` (домен `andreev.an51.su`) и Beget (`159.194.200.182`, домен
+`egor.an51.su`, порт 3001). `public/admin/config.yml` — статический файл,
+общий для обеих раздач, и `backend.base_url` в нём может указывать только
+на ОДИН домен одновременно (это то, куда Decap CMS открывает popup для
+логина). Канонический домен для CMS сейчас — **`egor.an51.su`**
+(`base_url: https://egor.an51.su`), под него создано и настроено отдельное
+GitHub OAuth App, Client ID/Secret прописаны в `.env.local` на Beget-сервере.
+`/api/auth` на Beget подтверждённо редиректит на GitHub с верным
+`redirect_uri=https://egor.an51.su/api/callback`.
+
+На `kvm.an51.su` (`andreev.an51.su`) `/admin` по-прежнему открывается, но
+кнопка "Login with GitHub" уводит на `egor.an51.su` (общий config.yml) —
+это ожидаемо, CMS-логин на этом домене больше не рабочий. Если понадобится
+сделать CMS рабочей на обоих доменах одновременно — единственный вариант
+в текущей архитектуре: разводить `config.yml` по разным веткам/деплоям
+(сейчас оба сервера трекают один и тот же `main`), либо генерировать
+`config.yml` динамически по домену запроса вместо статического файла в
+`public/`.
 
 **Критично — два фикса в `public/admin/index.html` и `next.config.ts`,
 без которых `/admin` (без слэша) отдаёт 404 при загрузке `config.yml`:**
