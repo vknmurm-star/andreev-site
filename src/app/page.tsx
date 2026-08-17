@@ -1,43 +1,16 @@
+import type { Metadata } from "next";
 import Link from "next/link";
 import Image from "next/image";
+import { getHomePage } from "@/lib/pages";
 
-const services = [
-  {
-    href: "/snyat-zapret",
-    title: "Снятие запрета на въезд",
-    text: "Консультация, оценка перспектив дела, стратегия снятия запрета на въезд в Россию.",
-  },
-  {
-    href: "/deportatsiya",
-    title: "Отмена депортации и выдворения",
-    text: "Поддержка в отмене депортации и выдворения законными методами.",
-  },
-  {
-    href: "/vnzh",
-    title: "ВНЖ и РВП",
-    text: "Юридическое сопровождение и точное следование законодательству при оформлении.",
-  },
-  {
-    href: "/grazhdanstvo",
-    title: "Гражданство России",
-    text: "Сопровождение на всех этапах натурализации.",
-  },
-];
-
-const situations = [
-  {
-    title: "Запрет на въезд из-за нарушения режима",
-    text: "Решения о запрете не всегда правомерны, есть возможность добиться справедливости.",
-  },
-  {
-    title: "Вступление и выход из гражданства",
-    text: "Сложности с РВП, ВНЖ, патентом на работу или другими документами.",
-  },
-  {
-    title: "Трудоустройство иностранных сотрудников",
-    text: "Помощь бизнесу при оформлении визового разрешения и приглашения для нерезидентов.",
-  },
-];
+export function generateMetadata(): Metadata {
+  const page = getHomePage();
+  if (!page) return {};
+  return {
+    title: page.metaTitle,
+    description: page.metaDescription,
+  };
+}
 
 function SectionLabel({ children }: { children: React.ReactNode }) {
   return (
@@ -48,25 +21,32 @@ function SectionLabel({ children }: { children: React.ReactNode }) {
   );
 }
 
+function phoneHref(display: string) {
+  return "tel:" + display.replace(/[^\d+]/g, "");
+}
+
 export default function Home() {
+  const page = getHomePage();
+  if (!page) return null;
+  const tel = phoneHref(page.hero.phoneDisplay);
+
   return (
     <>
       {/* Hero */}
       <section className="mx-auto max-w-6xl px-4 pt-16 pb-8 grid md:grid-cols-[1.3fr_1fr] gap-10 items-center">
         <div>
-          <p className="eyebrow mb-3">Адвокат по миграционному праву · Москва</p>
+          <p className="eyebrow mb-3">{page.hero.eyebrow}</p>
           <h1 className="font-display text-4xl sm:text-5xl leading-[1.1] text-ink">
-            Егор Викторович
+            {page.hero.headingLine1}
             <br />
-            Андреев
+            {page.hero.headingLine2}
           </h1>
           <p className="mt-5 text-text-muted text-lg max-w-md leading-relaxed">
-            Снятие запрета на въезд, отмена депортации и выдворения,
-            оформление РВП, ВНЖ и гражданства России.
+            {page.hero.subtitle}
           </p>
           <div className="mt-8 flex gap-3">
             <a
-              href="tel:+79994702020"
+              href={tel}
               className="rounded-none bg-ink px-6 py-3 text-paper font-medium hover:bg-seal transition-colors"
             >
               Позвонить
@@ -79,8 +59,8 @@ export default function Home() {
             </Link>
           </div>
           <p className="mt-6 flex items-baseline gap-2">
-            <span className="font-display text-2xl text-ink">10+</span>
-            <span className="eyebrow">лет практики в миграционном праве</span>
+            <span className="font-display text-2xl text-ink">{page.hero.statNumber}</span>
+            <span className="eyebrow">{page.hero.statLabel}</span>
           </p>
         </div>
         <div className="flex justify-start">
@@ -115,9 +95,9 @@ export default function Home() {
 
       {/* Услуги */}
       <section className="mx-auto max-w-6xl px-4 pt-2 pb-14">
-        <SectionLabel>Услуги</SectionLabel>
+        <SectionLabel>{page.servicesLabel}</SectionLabel>
         <div className="grid sm:grid-cols-2 lg:grid-cols-4 gap-px bg-line">
-          {services.map((s) => (
+          {page.services.map((s) => (
             <Link
               key={s.href}
               href={s.href}
@@ -132,18 +112,9 @@ export default function Home() {
 
       {/* Компетенции */}
       <section className="mx-auto max-w-6xl px-4 py-14">
-        <SectionLabel>Компетенции</SectionLabel>
+        <SectionLabel>{page.competenciesLabel}</SectionLabel>
         <ul className="grid sm:grid-cols-2 gap-x-8 gap-y-3">
-          {[
-            "Представление интересов иностранцев в судах РФ и за границей",
-            "Оформление РВП, ВНЖ, гражданства России",
-            "Снятие установленного запрета на въезд",
-            "Отмена и обжалование выдворения",
-            "Отмена депортации",
-            "Оспаривание действий отдела миграции МВД в суде",
-            "Сопровождение при оформлении разрешения на трудоустройство",
-            "Представление интересов в кассации, апелляции, Верховном Суде РФ",
-          ].map((item) => (
+          {page.competencies.map((item) => (
             <li key={item} className="flex gap-3 text-sm leading-relaxed text-text">
               <span className="text-brass">•</span>
               {item}
@@ -154,31 +125,24 @@ export default function Home() {
 
       {/* Оплата */}
       <section className="mx-auto max-w-6xl px-4 py-14">
-        <SectionLabel>Условия оплаты</SectionLabel>
+        <SectionLabel>{page.paymentLabel}</SectionLabel>
         <div className="grid sm:grid-cols-3 gap-px bg-line">
-          {[
-            ["30%", "При подписании договора"],
-            ["30%", "За 5 дней до первого судебного заседания"],
-            ["40%", "После получения судебного решения"],
-          ].map(([pct, desc]) => (
-            <div key={desc} className="bg-paper-raised p-6">
-              <p className="font-display text-3xl text-ink">{pct}</p>
-              <p className="text-sm text-text-muted mt-2">{desc}</p>
+          {page.paymentTerms.map((term) => (
+            <div key={term.description} className="bg-paper-raised p-6">
+              <p className="font-display text-3xl text-ink">{term.percent}</p>
+              <p className="text-sm text-text-muted mt-2">{term.description}</p>
             </div>
           ))}
         </div>
-        <p className="text-sm text-text-muted mt-5 max-w-xl">
-          Возможен вариант «всё под ключ»: один платёж, включающий все
-          расходы до вынесения решения суда.
-        </p>
+        <p className="text-sm text-text-muted mt-5 max-w-xl">{page.paymentNote}</p>
       </section>
 
       {/* Типовые ситуации */}
       <section className="py-14" style={{ background: "var(--paper-raised)" }}>
         <div className="mx-auto max-w-6xl px-4">
-          <SectionLabel>Когда нужна помощь миграционного юриста</SectionLabel>
+          <SectionLabel>{page.situationsLabel}</SectionLabel>
           <div className="grid sm:grid-cols-3 gap-8 mt-6">
-            {situations.map((s) => (
+            {page.situations.map((s) => (
               <div key={s.title}>
                 <h3 className="font-display text-lg text-ink mb-2">
                   {s.title}
@@ -194,16 +158,16 @@ export default function Home() {
 
       {/* Контакты */}
       <section className="mx-auto max-w-6xl px-4 py-14">
-        <SectionLabel>Контакты</SectionLabel>
+        <SectionLabel>{page.contactsLabel}</SectionLabel>
         <div className="grid md:grid-cols-[1fr_1.4fr] gap-8 items-center">
           <div className="space-y-2 text-text">
             <p className="font-display text-lg">
-              119017, г. Москва, Малая Ордынка, 5/6 стр. 4, офис 26
+              {page.address}
             </p>
             <p className="text-text-muted">
               Тел.:{" "}
-              <a href="tel:+79994702020" className="text-seal hover:underline">
-                +7 (999) 470-20-20
+              <a href={tel} className="text-seal hover:underline">
+                {page.hero.phoneDisplay}
               </a>{" "}
               (в том числе WhatsApp)
             </p>

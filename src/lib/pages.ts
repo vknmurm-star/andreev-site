@@ -55,3 +55,52 @@ export function getStoimostPage(): StoimostPage | null {
     footnote: data.footnote as string,
   };
 }
+
+export type ServiceCard = {
+  href: string;
+  title: string;
+  text: string;
+};
+
+export type PaymentTerm = {
+  percent: string;
+  description: string;
+};
+
+export type Situation = {
+  title: string;
+  text: string;
+};
+
+export type HomePage = {
+  metaTitle: string;
+  metaDescription: string;
+  hero: {
+    eyebrow: string;
+    headingLine1: string;
+    headingLine2: string;
+    subtitle: string;
+    phoneDisplay: string;
+    statNumber: string;
+    statLabel: string;
+  };
+  servicesLabel: string;
+  services: ServiceCard[];
+  competenciesLabel: string;
+  competencies: string[];
+  paymentLabel: string;
+  paymentTerms: PaymentTerm[];
+  paymentNote: string;
+  situationsLabel: string;
+  situations: Situation[];
+  contactsLabel: string;
+  address: string;
+};
+
+export function getHomePage(): HomePage | null {
+  const filePath = path.join(PAGES_DIR, "home.md");
+  if (!fs.existsSync(filePath)) return null;
+  const raw = fs.readFileSync(filePath, "utf8");
+  const { data } = matter(raw);
+  return data as HomePage;
+}

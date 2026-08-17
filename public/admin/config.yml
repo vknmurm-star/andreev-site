@@ -90,3 +90,47 @@ collections:
                   - { label: "Услуга", name: "service", widget: "text" }
                   - { label: "Цена", name: "price", widget: "string" }
           - { label: "Примечание внизу страницы", name: "footnote", widget: "text" }
+      - label: "Главная страница"
+        name: "home"
+        file: "content/pages/home.md"
+        fields:
+          - { label: "SEO: заголовок вкладки браузера", name: "metaTitle", widget: "string" }
+          - { label: "SEO: описание для поисковиков", name: "metaDescription", widget: "text" }
+          - label: "Hero-блок"
+            name: "hero"
+            widget: "object"
+            fields:
+              - { label: "Эйбраув (над заголовком)", name: "eyebrow", widget: "string" }
+              - { label: "Заголовок, строка 1", name: "headingLine1", widget: "string" }
+              - { label: "Заголовок, строка 2", name: "headingLine2", widget: "string" }
+              - { label: "Подзаголовок", name: "subtitle", widget: "text" }
+              - { label: "Телефон (для показа и звонка)", name: "phoneDisplay", widget: "string" }
+              - { label: "Число лет практики", name: "statNumber", widget: "string" }
+              - { label: "Подпись под числом лет", name: "statLabel", widget: "string" }
+          - { label: "Заголовок блока Услуги", name: "servicesLabel", widget: "string" }
+          - label: "Карточки услуг"
+            name: "services"
+            widget: "list"
+            fields:
+              - { label: "Ссылка (внутренний путь)", name: "href", widget: "string" }
+              - { label: "Заголовок карточки", name: "title", widget: "string" }
+              - { label: "Текст карточки", name: "text", widget: "text" }
+          - { label: "Заголовок блока Компетенции", name: "competenciesLabel", widget: "string" }
+          - { label: "Список компетенций", name: "competencies", widget: "list" }
+          - { label: "Заголовок блока Условия оплаты", name: "paymentLabel", widget: "string" }
+          - label: "Этапы оплаты"
+            name: "paymentTerms"
+            widget: "list"
+            fields:
+              - { label: "Процент", name: "percent", widget: "string" }
+              - { label: "Описание", name: "description", widget: "string" }
+          - { label: "Примечание про оплату под ключ", name: "paymentNote", widget: "text" }
+          - { label: "Заголовок блока Типовые ситуации", name: "situationsLabel", widget: "string" }
+          - label: "Типовые ситуации"
+            name: "situations"
+            widget: "list"
+            fields:
+              - { label: "Заголовок", name: "title", widget: "string" }
+              - { label: "Текст", name: "text", widget: "text" }
+          - { label: "Заголовок блока Контакты", name: "contactsLabel", widget: "string" }
+          - { label: "Адрес", name: "address", widget: "string" }
