@@ -18,6 +18,7 @@ export default function RootLayout({ children }: LayoutProps<"/">) {
   return (
     <html lang="ru" className="h-full">
       <head>
+        <meta name="google-site-verification" content="wivlQyw7EV1jjBZTBgnmNE_CRuU5yA4w3_oeo44Qpzo" />
         <OrganizationJsonLd />
         <link rel="preconnect" href="https://fonts.googleapis.com" />
         <link
