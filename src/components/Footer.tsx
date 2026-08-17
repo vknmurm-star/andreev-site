@@ -5,7 +5,7 @@ export default function Footer() {
     <footer className="mt-24">
       <div className="letterhead-rule" style={{ borderColor: "var(--line)" }} />
       <div className="mx-auto max-w-6xl px-4 py-8 text-[13px] text-text-muted flex flex-col sm:flex-row justify-between gap-4">
-        <p>© {new Date().getFullYear()} AndreevEgor.ru</p>
+        <p>© {new Date().getFullYear()} Андреев Егор Викторович</p>
         <div className="flex gap-5">
           <Link href="/privacy" className="hover:text-seal transition-colors">
             Политика конфиденциальности
