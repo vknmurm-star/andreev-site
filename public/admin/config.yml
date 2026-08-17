@@ -134,3 +134,10 @@ collections:
               - { label: "Текст", name: "text", widget: "text" }
           - { label: "Заголовок блока Контакты", name: "contactsLabel", widget: "string" }
           - { label: "Адрес", name: "address", widget: "string" }
+      - label: "Контакты (текстовый блок)"
+        name: "kontakty"
+        file: "content/pages/kontakty.md"
+        fields:
+          - { label: "SEO: заголовок вкладки браузера", name: "metaTitle", widget: "string" }
+          - { label: "SEO: описание для поисковиков", name: "metaDescription", widget: "text" }
+          - { label: "Текст страницы (форма и адрес редактируются отдельно в коде)", name: "body", widget: "markdown", body: true }
