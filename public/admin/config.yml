@@ -19,3 +19,15 @@ collections:
       - { label: "Дата", name: "date", widget: "datetime", format: "YYYY-MM-DD", date_format: "YYYY-MM-DD", time_format: false }
       - { label: "Краткое описание", name: "excerpt", widget: "text" }
       - { label: "Текст статьи", name: "body", widget: "markdown", body: true }
+
+  - name: "pages"
+    label: "Страницы услуг"
+    files:
+      - label: "Снять запрет на въезд"
+        name: "snyat-zapret"
+        file: "content/pages/snyat-zapret.md"
+        fields:
+          - { label: "Заголовок (H1)", name: "title", widget: "string" }
+          - { label: "SEO: заголовок вкладки браузера", name: "metaTitle", widget: "string" }
+          - { label: "SEO: описание для поисковиков", name: "metaDescription", widget: "text" }
+          - { label: "Текст страницы", name: "body", widget: "markdown", body: true }
