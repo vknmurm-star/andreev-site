@@ -1,4 +1,5 @@
 import type { Metadata } from "next";
+import Script from "next/script";
 import Header from "@/components/Header";
 import Footer from "@/components/Footer";
 import CookieNotice from "@/components/CookieNotice";
@@ -37,6 +38,10 @@ export default function RootLayout({ children }: LayoutProps<"/">) {
         <main className="flex-1">{children}</main>
         <Footer />
         <CookieNotice />
+        <Script
+          src="//code.jivo.ru/widget/lfc0yqgGdk"
+          strategy="lazyOnload"
+        />
       </body>
     </html>
   );
