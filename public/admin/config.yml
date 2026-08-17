@@ -71,3 +71,22 @@ collections:
           - { label: "SEO: заголовок вкладки браузера", name: "metaTitle", widget: "string" }
           - { label: "SEO: описание для поисковиков", name: "metaDescription", widget: "text" }
           - { label: "Текст страницы", name: "body", widget: "markdown", body: true }
+      - label: "Стоимость услуг"
+        name: "stoimost"
+        file: "content/pages/stoimost.md"
+        fields:
+          - { label: "Заголовок (H1)", name: "title", widget: "string" }
+          - { label: "SEO: заголовок вкладки браузера", name: "metaTitle", widget: "string" }
+          - { label: "SEO: описание для поисковиков", name: "metaDescription", widget: "text" }
+          - label: "Группы услуг"
+            name: "groups"
+            widget: "list"
+            fields:
+              - { label: "Название группы", name: "title", widget: "string" }
+              - label: "Позиции"
+                name: "rows"
+                widget: "list"
+                fields:
+                  - { label: "Услуга", name: "service", widget: "text" }
+                  - { label: "Цена", name: "price", widget: "string" }
+          - { label: "Примечание внизу страницы", name: "footnote", widget: "text" }

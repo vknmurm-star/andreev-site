@@ -23,3 +23,35 @@ export function getPageBySlug(slug: string): ServicePage | null {
     content,
   };
 }
+
+export type PriceRow = {
+  service: string;
+  price: string;
+};
+
+export type PriceGroup = {
+  title: string;
+  rows: PriceRow[];
+};
+
+export type StoimostPage = {
+  title: string;
+  metaTitle: string;
+  metaDescription: string;
+  groups: PriceGroup[];
+  footnote: string;
+};
+
+export function getStoimostPage(): StoimostPage | null {
+  const filePath = path.join(PAGES_DIR, "stoimost.md");
+  if (!fs.existsSync(filePath)) return null;
+  const raw = fs.readFileSync(filePath, "utf8");
+  const { data } = matter(raw);
+  return {
+    title: data.title as string,
+    metaTitle: data.metaTitle as string,
+    metaDescription: data.metaDescription as string,
+    groups: data.groups as PriceGroup[],
+    footnote: data.footnote as string,
+  };
+}
