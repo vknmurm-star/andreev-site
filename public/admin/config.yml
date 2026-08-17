@@ -55,3 +55,19 @@ collections:
           - { label: "SEO: заголовок вкладки браузера", name: "metaTitle", widget: "string" }
           - { label: "SEO: описание для поисковиков", name: "metaDescription", widget: "text" }
           - { label: "Текст страницы", name: "body", widget: "markdown", body: true }
+      - label: "Получить ВНЖ"
+        name: "vnzh"
+        file: "content/pages/vnzh.md"
+        fields:
+          - { label: "Заголовок (H1)", name: "title", widget: "string" }
+          - { label: "SEO: заголовок вкладки браузера", name: "metaTitle", widget: "string" }
+          - { label: "SEO: описание для поисковиков", name: "metaDescription", widget: "text" }
+          - { label: "Текст страницы", name: "body", widget: "markdown", body: true }
+      - label: "Получить РВП"
+        name: "rvp"
+        file: "content/pages/rvp.md"
+        fields:
+          - { label: "Заголовок (H1)", name: "title", widget: "string" }
+          - { label: "SEO: заголовок вкладки браузера", name: "metaTitle", widget: "string" }
+          - { label: "SEO: описание для поисковиков", name: "metaDescription", widget: "text" }
+          - { label: "Текст страницы", name: "body", widget: "markdown", body: true }
