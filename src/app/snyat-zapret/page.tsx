@@ -2,15 +2,24 @@ import type { Metadata } from "next";
 import Link from "next/link";
 import { marked } from "marked";
 import { getPageBySlug } from "@/lib/pages";
+import { buildMetadata } from "@/lib/seo";
+import RelatedArticles from "@/components/RelatedArticles";
 
 export function generateMetadata(): Metadata {
   const page = getPageBySlug("snyat-zapret");
   if (!page) return {};
-  return {
+  return buildMetadata({
     title: page.metaTitle,
     description: page.metaDescription,
-  };
+    path: "/snyat-zapret",
+  });
 }
+
+const relatedArticles = [
+  { slug: "kak-snyat-zapret-cena-2022", title: "Как снять запрет на въезд в Россию РФ" },
+  { slug: "protsess-snyatiya-zapreta", title: "Процесс снятия запрета на въезд в Россию: ключевые аспекты" },
+  { slug: "dosudebny-poryadok-otmena-zapreta", title: "Досудебный порядок за 30 дней: отмена запрета на въезд в Россию РФ" },
+];
 
 export default function Page() {
   const page = getPageBySlug("snyat-zapret");
@@ -33,6 +42,8 @@ export default function Page() {
           Написать письмо →
         </Link>
       </div>
+
+      <RelatedArticles items={relatedArticles} />
     </article>
   );
 }
