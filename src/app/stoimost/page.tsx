@@ -1,13 +1,15 @@
 import type { Metadata } from "next";
 import { getStoimostPage, type PriceRow } from "@/lib/pages";
+import { buildMetadata } from "@/lib/seo";
 
 export function generateMetadata(): Metadata {
   const page = getStoimostPage();
   if (!page) return {};
-  return {
+  return buildMetadata({
     title: page.metaTitle,
     description: page.metaDescription,
-  };
+    path: "/stoimost",
+  });
 }
 
 function Table({ title, rows }: { title: string; rows: PriceRow[] }) {

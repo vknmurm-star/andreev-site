@@ -2,14 +2,16 @@ import type { Metadata } from "next";
 import Image from "next/image";
 import { marked } from "marked";
 import { getPageBySlug } from "@/lib/pages";
+import { buildMetadata } from "@/lib/seo";
 
 export function generateMetadata(): Metadata {
   const page = getPageBySlug("kontakty");
   if (!page) return {};
-  return {
+  return buildMetadata({
     title: page.metaTitle,
     description: page.metaDescription,
-  };
+    path: "/kontakty",
+  });
 }
 
 export default function Page() {
