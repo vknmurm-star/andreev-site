@@ -3,18 +3,22 @@ import Script from "next/script";
 import Header from "@/components/Header";
 import Footer from "@/components/Footer";
 import CookieNotice from "@/components/CookieNotice";
+import OrganizationJsonLd from "@/components/OrganizationJsonLd";
+import { buildMetadata } from "@/lib/seo";
 import "./globals.css";
 
-export const metadata: Metadata = {
+export const metadata: Metadata = buildMetadata({
   title: "Миграционный юрист Егор Андреев | Москва",
   description:
     "Миграционный юрист Андреев Егор Викторович. Снятие запрета на въезд в Россию, отмена депортации и выдворения, оформление РВП, ВНЖ и гражданства РФ.",
-};
+  path: "/",
+});
 
 export default function RootLayout({ children }: LayoutProps<"/">) {
   return (
     <html lang="ru" className="h-full">
       <head>
+        <OrganizationJsonLd />
         <link rel="preconnect" href="https://fonts.googleapis.com" />
         <link
           rel="preconnect"
