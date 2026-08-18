@@ -33,7 +33,7 @@ export default function Home() {
   return (
     <>
       {/* Hero */}
-      <section className="mx-auto max-w-6xl px-4 pt-16 pb-8 grid md:grid-cols-[1.3fr_1fr] gap-10 items-center">
+      <section className="mx-auto max-w-6xl px-4 pt-16 pb-16 grid md:grid-cols-[1.3fr_1fr] gap-10 items-center">
         <div>
           <p className="eyebrow mb-3">{page.hero.eyebrow}</p>
           <h1 className="font-display text-4xl sm:text-5xl leading-[1.1] text-ink">
