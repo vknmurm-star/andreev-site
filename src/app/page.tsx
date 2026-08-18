@@ -102,16 +102,10 @@ export default function Home() {
               key={s.href}
               href={s.href}
               style={{ animationDelay: `${i * 0.1}s` }}
-              className="card-fade-in group relative block border border-transparent bg-paper-raised p-6 pr-10 transition-all duration-[250ms] ease-[ease] hover:-translate-y-1 hover:border-brass hover:bg-paper hover:shadow-lg"
+              className="card-fade-in block border border-transparent bg-paper-raised p-6 transition-all duration-[250ms] ease-[ease] hover:-translate-y-1 hover:border-brass hover:bg-paper hover:shadow-lg"
             >
               <h3 className="font-display text-lg text-ink mb-2">{s.title}</h3>
               <p className="text-sm text-text-muted leading-relaxed">{s.text}</p>
-              <span
-                aria-hidden="true"
-                className="absolute right-4 top-1/2 -translate-y-1/2 -translate-x-1 text-brass opacity-0 transition-all duration-[250ms] ease-[ease] group-hover:translate-x-0 group-hover:opacity-100"
-              >
-                →
-              </span>
             </Link>
           ))}
         </div>
