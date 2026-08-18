@@ -90,9 +90,48 @@ config.yml) — это ожидаемо, CMS-логин на этом домен
 
 ## Деплой
 
-Процесс из skill vds-nextjs-deploy. Автодеплоя через cron нет (решили не
-настраивать) — обновления на VDS накатываются вручную: git pull, npm
-install, npm run build, pm2 restart andreev-site.
+Процесс из skill vds-nextjs-deploy. На Beget (`159.194.200.182`) настроен
+автодеплой: cron каждые 5 минут запускает
+`/var/www/andreev-site/auto-deploy-check.sh`, который при новом коммите в
+`main` вызывает `deploy.sh` (git pull → npm install → npm run build → pm2
+restart andreev-site, защищено flock от параллельного запуска).
+
+## Форма обратной связи (/kontakty)
+
+Реализована полностью (ранее формы не было вообще — ни серверной логики,
+ни name-атрибутов).
+
+- `src/components/ContactForm.tsx` — клиентский компонент (`"use client"`),
+  поля: имя/email/телефон/сообщение/чекбокс согласия + honeypot-поле
+  `website` (скрыто через `className="hidden"`, боты его иногда всё равно
+  заполняют — если заполнено, сервер тихо возвращает `ok: true` и ничего не
+  отправляет). Показывает состояния "отправка…" / успех / ошибка без
+  перезагрузки страницы.
+- `src/app/api/contact/route.ts` — API route: rate-limit (5 запросов / 10
+  минут с одного IP, `src/lib/rateLimit.ts`), валидация обязательных полей
+  и формата email, экранирование пользовательского ввода перед вставкой в
+  HTML письма, отправка через `src/lib/mailer.ts` (nodemailer).
+- Письма уходят на **`egor@an51.su`** через SMTP-релей Timeweb
+  (`smtp.timeweb.ru:465`, тот же relay, что и у market-001 для
+  `market@an51.su`). `replyTo` письма — email из формы, чтобы отвечать
+  клиенту напрямую.
+
+Требуемые переменные окружения в `.env.local` на Beget (сейчас НЕ заданы —
+нужно добавить вручную через SSH, пароль в код/git/чат никогда не пишется):
+```
+SMTP_HOST=smtp.timeweb.ru
+SMTP_PORT=465
+SMTP_USER=egor@an51.su
+SMTP_FROM=egor@an51.su
+ADMIN_EMAIL=egor@an51.su
+SMTP_PASS=<пароль от почтового ящика egor@an51.su>
+```
+Пока `SMTP_PASS`/`SMTP_HOST`/`SMTP_USER` не заданы, `isMailerConfigured()`
+в `mailer.ts` возвращает false — форма принимает заявки и отвечает
+пользователю ошибкой ("не удалось отправить, позвоните напрямую"), но
+письма не уходят. После добавления переменных pm2-рестарт (следующий
+автодеплой или `pm2 restart andreev-site`) подхватит их — `.env.local`
+читается при старте процесса.
 
 ## Важно про git при передаче файлов через архив
 
