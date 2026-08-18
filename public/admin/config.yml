@@ -141,3 +141,11 @@ collections:
           - { label: "SEO: заголовок вкладки браузера", name: "metaTitle", widget: "string" }
           - { label: "SEO: описание для поисковиков", name: "metaDescription", widget: "text" }
           - { label: "Текст страницы (форма и адрес редактируются отдельно в коде)", name: "body", widget: "markdown", body: true }
+      - label: "Как выбрать миграционного адвоката"
+        name: "kak-vybrat-advokata"
+        file: "content/pages/kak-vybrat-advokata.md"
+        fields:
+          - { label: "Заголовок (H1)", name: "title", widget: "string" }
+          - { label: "SEO: заголовок вкладки браузера", name: "metaTitle", widget: "string" }
+          - { label: "SEO: описание для поисковиков", name: "metaDescription", widget: "text" }
+          - { label: "Текст страницы", name: "body", widget: "markdown", body: true }

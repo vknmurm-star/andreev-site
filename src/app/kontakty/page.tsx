@@ -17,13 +17,7 @@ export function generateMetadata(): Metadata {
 
 export default function Page() {
   const page = getPageBySlug("kontakty");
-  let html = page ? (marked.parse(page.content, { async: false }) as string) : "";
-  // marked не проставляет id заголовкам — добавляем точечно якорь для
-  // ссылки с главной (блок "Когда нужна помощь миграционного юриста").
-  html = html.replace(
-    "<h2>Миграционный адвокат: как правильно выбрать</h2>",
-    '<h2 id="kak-vybrat-advokata">Миграционный адвокат: как правильно выбрать</h2>',
-  );
+  const html = page ? (marked.parse(page.content, { async: false }) as string) : "";
 
   return (
     <section className="mx-auto max-w-3xl px-4 py-14">
