@@ -64,7 +64,7 @@ export default function Home() {
           </p>
         </div>
         <div className="flex justify-start">
-          <div className="relative w-72 sm:w-80">
+          <div className="relative w-72 sm:w-80 p-2 border border-brass">
             <div className="relative aspect-[4/5] bg-paper-raised border border-line overflow-hidden">
               <Image
                 src="/images/egor-andreev.jpg"
