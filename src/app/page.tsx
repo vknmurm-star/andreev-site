@@ -154,6 +154,12 @@ export default function Home() {
               </div>
             ))}
           </div>
+          <Link
+            href="/kontakty#kak-vybrat-advokata"
+            className="inline-block mt-6 text-sm text-brass-deep hover:text-seal underline underline-offset-4"
+          >
+            Как правильно выбрать миграционного адвоката →
+          </Link>
         </div>
       </section>
 
