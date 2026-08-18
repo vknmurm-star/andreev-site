@@ -6,8 +6,8 @@ const menu = [
   { href: "/deportatsiya", label: "Отменить депортацию" },
   { href: "/proverit-zapret", label: "Проверить запрет" },
   { href: "/grazhdanstvo", label: "Гражданство" },
-  { href: "/vnzh", label: "ВНЖ" },
   { href: "/rvp", label: "РВП" },
+  { href: "/vnzh", label: "ВНЖ" },
   { href: "/stoimost", label: "Стоимость услуг" },
 ];
 
