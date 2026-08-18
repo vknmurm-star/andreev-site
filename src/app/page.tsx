@@ -97,17 +97,44 @@ export default function Home() {
       <section className="mx-auto max-w-6xl px-4 pt-2 pb-14">
         <SectionLabel>{page.servicesLabel}</SectionLabel>
         <div className="grid sm:grid-cols-2 lg:grid-cols-4 gap-px bg-line">
-          {page.services.map((s, i) => (
-            <Link
-              key={s.href}
-              href={s.href}
-              style={{ animationDelay: `${i * 0.1}s` }}
-              className="card-fade-in block border border-transparent bg-paper-raised p-6 transition-all duration-[250ms] ease-[ease] hover:-translate-y-1 hover:border-brass hover:bg-paper hover:shadow-lg"
-            >
-              <h3 className="font-display text-lg text-ink mb-2">{s.title}</h3>
-              <p className="text-sm text-text-muted leading-relaxed">{s.text}</p>
-            </Link>
-          ))}
+          {page.services.map((s, i) => {
+            const style = { animationDelay: `${i * 0.1}s` };
+            const cardClassName =
+              "card-fade-in block border border-transparent bg-paper-raised p-6 transition-all duration-[250ms] ease-[ease] hover:-translate-y-1 hover:border-brass hover:bg-paper hover:shadow-lg";
+
+            // Карточка охватывает две темы (ВНЖ и РВП), а поле href в
+            // данных — одно, поэтому здесь особый случай: две ссылки
+            // вместо клика по всей карточке.
+            if (s.title === "ВНЖ и РВП") {
+              return (
+                <div key={s.href} style={style} className={cardClassName}>
+                  <h3 className="font-display text-lg text-ink mb-2">{s.title}</h3>
+                  <p className="text-sm text-text-muted leading-relaxed mb-3">{s.text}</p>
+                  <div className="flex flex-wrap gap-x-4 gap-y-1">
+                    <Link
+                      href={s.href}
+                      className="text-sm text-brass-deep hover:text-seal underline underline-offset-4"
+                    >
+                      Подробнее о ВНЖ
+                    </Link>
+                    <Link
+                      href="/rvp"
+                      className="text-sm text-brass-deep hover:text-seal underline underline-offset-4"
+                    >
+                      Подробнее о РВП
+                    </Link>
+                  </div>
+                </div>
+              );
+            }
+
+            return (
+              <Link key={s.href} href={s.href} style={style} className={cardClassName}>
+                <h3 className="font-display text-lg text-ink mb-2">{s.title}</h3>
+                <p className="text-sm text-text-muted leading-relaxed">{s.text}</p>
+              </Link>
+            );
+          })}
         </div>
       </section>
 
