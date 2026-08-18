@@ -10,6 +10,7 @@
   --brass: #a47b3e;
   --brass-deep: #7d5c2a;
   --brass-warm: #b8923c;
+  --parchment: #e2d8c4;
   --seal: #7a2430;
   --line: #d6d1c0;
 }
@@ -24,6 +25,7 @@
   --color-brass: var(--brass);
   --color-brass-deep: var(--brass-deep);
   --color-brass-warm: var(--brass-warm);
+  --color-parchment: var(--parchment);
   --color-seal: var(--seal);
   --color-line: var(--line);
   --font-display: var(--font-pt-serif), Georgia, "Times New Roman", serif;
