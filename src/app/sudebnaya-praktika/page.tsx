@@ -13,9 +13,10 @@ export const metadata: Metadata = buildMetadata({
 const serviceLinks = [
   { href: "/snyat-zapret", label: "Снять запрет" },
   { href: "/deportatsiya", label: "Отменить депортацию" },
+  { href: "/proverit-zapret", label: "Проверить запрет" },
   { href: "/grazhdanstvo", label: "Гражданство" },
-  { href: "/vnzh", label: "ВНЖ" },
   { href: "/rvp", label: "РВП" },
+  { href: "/vnzh", label: "ВНЖ" },
 ];
 
 function formatDate(iso: string) {
