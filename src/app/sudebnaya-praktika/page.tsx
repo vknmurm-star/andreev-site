@@ -12,6 +12,7 @@ export const metadata: Metadata = buildMetadata({
 
 const serviceLinks = [
   { href: "/snyat-zapret", label: "Снять запрет" },
+  { href: "/deportatsiya", label: "Отменить депортацию" },
   { href: "/grazhdanstvo", label: "Гражданство" },
   { href: "/vnzh", label: "ВНЖ" },
   { href: "/rvp", label: "РВП" },
@@ -33,9 +34,7 @@ export default function Page() {
     <section className="mx-auto max-w-3xl px-4 py-14">
       <h1 className="font-display text-3xl text-ink mb-2">Судебная практика</h1>
       <p className="text-text-muted mb-4">
-        Разборы реальных дел и правовые гиды по миграционному
-        законодательству. Полный архив (80+ материалов) переносится на новую
-        платформу поэтапно, ниже статьи, уже доступные на сайте.
+        Разборы реальных дел и правовые гиды по миграционному законодательству.
       </p>
       <p className="text-sm text-text-muted mb-10">
         Также смотрите:{" "}
