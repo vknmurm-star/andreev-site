@@ -1,7 +1,30 @@
 import type { Metadata } from "next";
 import Link from "next/link";
 import Image from "next/image";
+import {
+  Scale,
+  FileCheck,
+  Unlock,
+  ShieldCheck,
+  ShieldAlert,
+  Landmark,
+  Briefcase,
+  Gavel,
+} from "lucide-react";
 import { getHomePage } from "@/lib/pages";
+
+// Порядок соответствует page.competencies в content/pages/home.md —
+// у пунктов нет отдельного поля для иконки, сопоставляем по индексу.
+const competencyIcons = [
+  Scale,
+  FileCheck,
+  Unlock,
+  ShieldCheck,
+  ShieldAlert,
+  Landmark,
+  Briefcase,
+  Gavel,
+];
 
 export function generateMetadata(): Metadata {
   const page = getHomePage();
@@ -115,12 +138,15 @@ export default function Home() {
       <section className="mx-auto max-w-6xl px-4 py-14">
         <SectionLabel>{page.competenciesLabel}</SectionLabel>
         <ul className="grid sm:grid-cols-2 gap-x-8 gap-y-3">
-          {page.competencies.map((item) => (
-            <li key={item} className="flex gap-3 text-sm leading-relaxed text-text">
-              <span className="text-brass">•</span>
-              {item}
-            </li>
-          ))}
+          {page.competencies.map((item, i) => {
+            const Icon = competencyIcons[i] ?? Scale;
+            return (
+              <li key={item} className="flex gap-3 text-sm leading-relaxed text-text">
+                <Icon className="w-5 h-5 shrink-0 mt-0.5 text-brass" />
+                {item}
+              </li>
+            );
+          })}
         </ul>
       </section>
 
