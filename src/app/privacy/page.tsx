@@ -1,10 +1,12 @@
 import type { Metadata } from "next";
+import { buildMetadata } from "@/lib/seo";
 
-export const metadata: Metadata = {
-  title: "Политика обработки персональных данных | AndreevEgor.ru",
+export const metadata: Metadata = buildMetadata({
+  title: "Политика обработки персональных данных | Миграционный юрист Егор Андреев",
   description:
-    "Политика обработки персональных данных сайта andreevegor.ru в соответствии с 152-ФЗ.",
-};
+    "Политика обработки персональных данных сайта andreev-zakon.ru в соответствии с 152-ФЗ.",
+  path: "/privacy",
+});
 
 export default function Page() {
   return (
@@ -18,7 +20,7 @@ export default function Page() {
         определяет порядок обработки персональных данных Андреевым Егором
         Викторовичем (далее именуемым Оператор). Политика применяется ко всей
         информации, которую Оператор может получить о посетителях сайта
-        https://andreevegor.ru.
+        https://andreev-zakon.ru.
       </p>
 
       <h2>2. Основные понятия</h2>
