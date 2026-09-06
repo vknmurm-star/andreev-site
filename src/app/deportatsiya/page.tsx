@@ -15,9 +15,9 @@ export function generateMetadata(): Metadata {
 }
 
 const relatedArticles = [
-  { slug: "kak-otmenit-deportatsiyu-2022", title: "Как отменить депортацию из России? Какая разница между депортацией и выдворением" },
   { slug: "chto-takoe-deportatsiya-i-vydvorenie", title: "Что такое депортация и выдворение? В чём их отличие?" },
   { slug: "administrativnoe-vydvorenie-2023", title: "Административное выдворение иностранного гражданина из России" },
+  { slug: "kak-ne-dopustit-vydvoreniya-2022", title: "Родственники в России как основание не допустить выдворения" },
 ];
 
 export default function Page() {

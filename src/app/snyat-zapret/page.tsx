@@ -16,7 +16,7 @@ export function generateMetadata(): Metadata {
 }
 
 const relatedArticles = [
-  { slug: "kak-snyat-zapret-cena-2022", title: "Как снять запрет на въезд в Россию РФ" },
+  { slug: "kak-snyat-zapret-cena-2022", title: "Какие обстоятельства учитывает суд при отмене запрета на въезд" },
   { slug: "protsess-snyatiya-zapreta", title: "Процесс снятия запрета на въезд в Россию: ключевые аспекты" },
   { slug: "dosudebny-poryadok-otmena-zapreta", title: "Досудебный порядок за 30 дней: отмена запрета на въезд в Россию РФ" },
 ];

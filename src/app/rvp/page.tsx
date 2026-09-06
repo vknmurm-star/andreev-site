@@ -16,7 +16,6 @@ export function generateMetadata(): Metadata {
 
 const relatedArticles = [
   { slug: "kak-poluchit-rvp-2023", title: "Как получить разрешение на временное проживание (РВП) в России?" },
-  { slug: "kak-poluchit-rvp-2022", title: "Как получить РВП. Разрешение на временное проживание" },
   { slug: "kak-poluchit-vnzh-2023", title: "Как получить вид на жительство ВНЖ в 2023 году" },
 ];
 
