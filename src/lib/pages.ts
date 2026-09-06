@@ -34,12 +34,18 @@ export type PriceGroup = {
   rows: PriceRow[];
 };
 
+export type FaqItem = {
+  question: string;
+  answer: string;
+};
+
 export type StoimostPage = {
   title: string;
   metaTitle: string;
   metaDescription: string;
   groups: PriceGroup[];
   footnote: string;
+  faq: FaqItem[];
 };
 
 export function getStoimostPage(): StoimostPage | null {
@@ -53,6 +59,7 @@ export function getStoimostPage(): StoimostPage | null {
     metaDescription: data.metaDescription as string,
     groups: data.groups as PriceGroup[],
     footnote: data.footnote as string,
+    faq: (data.faq as FaqItem[]) ?? [],
   };
 }
 

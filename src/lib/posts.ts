@@ -4,6 +4,11 @@ import matter from "gray-matter";
 
 const POSTS_DIR = path.join(process.cwd(), "content", "posts");
 
+export type HowToStep = {
+  name: string;
+  text: string;
+};
+
 export type PostMeta = {
   slug: string;
   title: string;
@@ -13,6 +18,7 @@ export type PostMeta = {
 
 export type Post = PostMeta & {
   content: string;
+  steps?: HowToStep[];
 };
 
 function listSlugs(): string[] {
@@ -49,5 +55,6 @@ export function getPostBySlug(slug: string): Post | null {
     date: data.date as string,
     excerpt: data.excerpt as string,
     content,
+    steps: data.steps as HowToStep[] | undefined,
   };
 }

@@ -1,8 +1,9 @@
 import { notFound } from "next/navigation";
 import { marked } from "marked";
 import { getAllPosts, getPostBySlug } from "@/lib/posts";
-import { buildMetadata } from "@/lib/seo";
+import { buildMetadata, SITE_URL } from "@/lib/seo";
 import ArticleJsonLd from "@/components/ArticleJsonLd";
+import HowToJsonLd from "@/components/HowToJsonLd";
 import AuthorBio from "@/components/AuthorBio";
 
 export function generateStaticParams() {
@@ -52,6 +53,14 @@ export default async function Page({
         date={post.date}
         slug={slug}
       />
+      {post.steps && post.steps.length > 0 && (
+        <HowToJsonLd
+          name={post.title}
+          description={post.excerpt}
+          url={`${SITE_URL}/sudebnaya-praktika/${slug}`}
+          steps={post.steps}
+        />
+      )}
       <p className="text-sm text-brass not-prose mb-2">
         {formatDate(post.date)}
       </p>
