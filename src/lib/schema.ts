@@ -1,4 +1,4 @@
-import { SITE_URL } from "@/lib/seo";
+import { SITE_URL, DEFAULT_OG_IMAGE } from "@/lib/seo";
 
 export type FaqItem = {
   question: string;
@@ -60,4 +60,48 @@ export function buildHowToJsonLd({
   };
 }
 
-export { SITE_URL };
+/**
+ * Строит объект Article (schema.org). У статей блога сейчас нет собственных
+ * обложек во frontmatter (поля image/cover/thumbnail не заведены) — пока
+ * используется дефолтное изображение сайта (то же, что уже стоит в og:image
+ * на всех страницах через buildMetadata), чтобы у Google был валидный `image`.
+ * Если у статьи появится своя обложка (image), достаточно передать её вместо
+ * дефолтной, поле уже поддерживается.
+ */
+export function buildArticleJsonLd({
+  title,
+  description,
+  date,
+  url,
+  image = DEFAULT_OG_IMAGE,
+}: {
+  title: string;
+  description: string;
+  date: string;
+  url: string;
+  image?: string;
+}) {
+  return {
+    "@context": "https://schema.org",
+    "@type": "Article",
+    headline: title,
+    description,
+    image,
+    datePublished: date,
+    dateModified: date,
+    url,
+    author: {
+      "@type": "Person",
+      name: "Егор Викторович Андреев",
+      jobTitle: "Миграционный юрист",
+      url: SITE_URL,
+    },
+    publisher: {
+      "@type": "Organization",
+      name: "Андреев Егор Викторович — миграционный юрист",
+      url: SITE_URL,
+    },
+  };
+}
+
+export { SITE_URL, DEFAULT_OG_IMAGE };

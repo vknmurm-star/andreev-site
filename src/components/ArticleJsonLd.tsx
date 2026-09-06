@@ -1,36 +1,26 @@
 import { SITE_URL } from "@/lib/seo";
+import { buildArticleJsonLd } from "@/lib/schema";
 
 export default function ArticleJsonLd({
   title,
   description,
   date,
   slug,
+  image,
 }: {
   title: string;
   description: string;
   date: string;
   slug: string;
+  image?: string;
 }) {
-  const data = {
-    "@context": "https://schema.org",
-    "@type": "Article",
-    headline: title,
+  const data = buildArticleJsonLd({
+    title,
     description,
-    datePublished: date,
-    dateModified: date,
+    date,
     url: `${SITE_URL}/sudebnaya-praktika/${slug}`,
-    author: {
-      "@type": "Person",
-      name: "Егор Викторович Андреев",
-      jobTitle: "Миграционный юрист",
-      url: SITE_URL,
-    },
-    publisher: {
-      "@type": "Organization",
-      name: "Андреев Егор Викторович — миграционный юрист",
-      url: SITE_URL,
-    },
-  };
+    image,
+  });
 
   return (
     <script
