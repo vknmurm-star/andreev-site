@@ -61,6 +61,20 @@ export function buildHowToJsonLd({
 }
 
 /**
+ * Даты в frontmatter статей хранятся как "YYYY-MM-DD" (без времени и часового
+ * пояса) — Google Rich Results Test помечает такой datePublished/dateModified
+ * как "незначительную проблему" (недопустимый формат даты/времени, не указан
+ * часовой пояс). Дополняем до полного ISO 8601 с часовым поясом сайта (Москва,
+ * UTC+3), не трогая сами данные в markdown.
+ */
+function toIsoWithTimezone(date: string): string {
+  if (/^\d{4}-\d{2}-\d{2}$/.test(date)) {
+    return `${date}T00:00:00+03:00`;
+  }
+  return date;
+}
+
+/**
  * Строит объект Article (schema.org). У статей блога сейчас нет собственных
  * обложек во frontmatter (поля image/cover/thumbnail не заведены) — пока
  * используется дефолтное изображение сайта (то же, что уже стоит в og:image
@@ -87,8 +101,8 @@ export function buildArticleJsonLd({
     headline: title,
     description,
     image,
-    datePublished: date,
-    dateModified: date,
+    datePublished: toIsoWithTimezone(date),
+    dateModified: toIsoWithTimezone(date),
     url,
     author: {
       "@type": "Person",
