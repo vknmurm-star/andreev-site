@@ -109,7 +109,7 @@ export default function Home() {
             src="/videos/urist-intro.mp4"
             controls
             preload="none"
-            poster="/images/egor-andreev.jpg"
+            poster="/images/urist-intro-poster.jpg"
             className="w-full h-full object-cover"
           >
             Ваш браузер не поддерживает воспроизведение видео.
