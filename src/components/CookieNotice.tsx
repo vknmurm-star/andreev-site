@@ -29,9 +29,14 @@ export default function CookieNotice() {
   if (!visible) return null;
 
   return (
-    <div className="fixed inset-x-0 bottom-0 z-50 border-t border-line bg-paper-raised">
-      <div className="mx-auto max-w-6xl px-4 py-4 flex flex-col sm:flex-row sm:items-center gap-3 sm:gap-6">
-        <p className="text-sm text-text-muted flex-1">
+    // Позиция намеренно смещена в левый нижний угол (а не во всю ширину)
+    // и приподнята над нижним краем на мобильных — виджет Jivo живёт в
+    // правом нижнем углу (и разворачивается там же в окно чата), z-index
+    // у него выставляется динамически самим виджетом, поэтому надёжнее
+    // развести баннер и чат по разным углам, чем гнаться за z-index.
+    <div className="fixed left-4 right-4 bottom-20 z-50 sm:left-6 sm:right-auto sm:bottom-6 sm:w-full sm:max-w-md border border-line bg-paper-raised shadow-lg">
+      <div className="px-4 py-4 flex flex-col gap-3">
+        <p className="text-sm text-text-muted">
           Мы используем cookie-файлы для наилучшего представления нашего
           сайта. Продолжая использовать этот сайт, вы соглашаетесь с{" "}
           <a
