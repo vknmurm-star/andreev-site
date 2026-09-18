@@ -4,7 +4,7 @@ export default function OrganizationJsonLd() {
   const data = {
     "@context": "https://schema.org",
     "@type": "LegalService",
-    name: "Андреев Егор Викторович — миграционный юрист",
+    name: "Миграционный юрист Егор Андреев",
     image: `${SITE_URL}/images/egor-andreev.jpg`,
     url: SITE_URL,
     telephone: "+7-999-470-20-20",

@@ -1,7 +1,7 @@
 import type { Metadata } from "next";
 
 const SITE_URL = "https://andreev-zakon.ru";
-const SITE_NAME = "Андреев Егор — миграционный юрист";
+const SITE_NAME = "Миграционный юрист Егор Андреев";
 const DEFAULT_OG_IMAGE = `${SITE_URL}/images/kontakty-banner.jpg`;
 
 export function buildMetadata({

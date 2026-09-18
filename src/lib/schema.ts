@@ -112,7 +112,7 @@ export function buildArticleJsonLd({
     },
     publisher: {
       "@type": "Organization",
-      name: "Андреев Егор Викторович — миграционный юрист",
+      name: "Миграционный юрист Егор Андреев",
       url: SITE_URL,
     },
   };

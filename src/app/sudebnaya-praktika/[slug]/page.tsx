@@ -19,7 +19,7 @@ export async function generateMetadata({
   const post = getPostBySlug(slug);
   if (!post) return {};
   return buildMetadata({
-    title: `${post.title} | Андреев Егор Викторович`,
+    title: `${post.title} | Миграционный юрист Егор Андреев`,
     description: post.excerpt,
     path: `/sudebnaya-praktika/${slug}`,
   });

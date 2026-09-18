@@ -7,12 +7,18 @@ import OrganizationJsonLd from "@/components/OrganizationJsonLd";
 import { buildMetadata } from "@/lib/seo";
 import "./globals.css";
 
-export const metadata: Metadata = buildMetadata({
-  title: "Миграционный юрист Егор Андреев | Москва",
-  description:
-    "Миграционный юрист Андреев Егор Викторович. Снятие запрета на въезд в Россию, отмена депортации и выдворения, оформление РВП, ВНЖ и гражданства РФ.",
-  path: "/",
-});
+export const metadata: Metadata = {
+  ...buildMetadata({
+    title: "Миграционный юрист Егор Андреев | Москва",
+    description:
+      "Миграционный юрист Егор Андреев. Снятие запрета на въезд в Россию, отмена депортации и выдворения, оформление РВП, ВНЖ и гражданства РФ.",
+    path: "/",
+  }),
+  icons: {
+    icon: "/favicon.ico",
+    apple: "/images/apple-touch-icon.png",
+  },
+};
 
 export default function RootLayout({ children }: LayoutProps<"/">) {
   return (
