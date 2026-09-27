@@ -74,7 +74,7 @@ export async function POST(req: Request) {
   // с нашим JS), обрабатываем так же, как слишком быстрое заполнение.
   const elapsedMs = typeof body.loadedAt === "number" ? Date.now() - body.loadedAt : null;
   if (elapsedMs === null || elapsedMs < MIN_FILL_TIME_MS) {
-    log(id, `honeypot: too-fast (${elapsedMs ?? "no-timestamp"}ms)`);
+    log(id, `honeypot: too-fast (${elapsedMs === null ? "no-timestamp" : `${elapsedMs}ms`})`);
     return NextResponse.json({ ok: true });
   }
 
