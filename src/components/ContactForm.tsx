@@ -1,12 +1,16 @@
 "use client";
 
-import { useState, type FormEvent } from "react";
+import { useState, useRef, type FormEvent } from "react";
 
 type Status = "idle" | "loading" | "success" | "error";
 
 export default function ContactForm() {
   const [status, setStatus] = useState<Status>("idle");
   const [errorMessage, setErrorMessage] = useState("");
+  // Момент монтирования формы — сервер сравнивает его со временем получения
+  // запроса: живой человек не успевает найти и заполнить поля меньше чем за
+  // 3 секунды, боты часто отправляют форму сразу после загрузки страницы.
+  const loadedAtRef = useRef(Date.now());
 
   async function handleSubmit(e: FormEvent<HTMLFormElement>) {
     e.preventDefault();
@@ -26,7 +30,8 @@ export default function ContactForm() {
           phone: data.get("phone"),
           message: data.get("message"),
           consent: data.get("consent") === "on",
-          website: data.get("website"),
+          hp_check: data.get("hp_check"),
+          loadedAt: loadedAtRef.current,
         }),
       });
 
@@ -59,14 +64,26 @@ export default function ContactForm() {
 
   return (
     <form className="grid gap-4 max-w-md mb-14" onSubmit={handleSubmit}>
-      {/* Honeypot: скрыто от людей, боты часто заполняют все поля подряд */}
+      {/* Honeypot: имя поля нейтральное (не website/url/site/company/email/
+          phone/name), чтобы браузеры и менеджеры паролей не пытались его
+          автозаполнить — иначе ловушка сработала бы на живых людях. Скрыто
+          сдвигом за пределы экрана через inline-стиль (не display:none и не
+          type="hidden" — такие боты, читающие DOM, иногда пропускают, а
+          обычные текстовые поля вне экрана заполняют не глядя), без label. */}
       <input
         type="text"
-        name="website"
+        name="hp_check"
         tabIndex={-1}
         autoComplete="off"
         aria-hidden="true"
-        className="hidden"
+        style={{
+          position: "absolute",
+          left: "-9999px",
+          top: "-9999px",
+          width: "1px",
+          height: "1px",
+          overflow: "hidden",
+        }}
       />
       <div>
         <label className="block text-sm text-text-muted mb-1">Ваше имя*</label>
