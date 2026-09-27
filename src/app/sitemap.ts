@@ -22,6 +22,7 @@ const routeFiles: Record<string, string[]> = {
   "/kontakty": ["src/app/kontakty/page.tsx", "content/pages/kontakty.md"],
   "/kak-vybrat-advokata": ["src/app/kak-vybrat-advokata/page.tsx", "content/pages/kak-vybrat-advokata.md"],
   "/privacy": ["src/app/privacy/page.tsx"],
+  "/consent": ["src/app/consent/page.tsx"],
 };
 
 function lastCommitDate(paths: string[]): Date {

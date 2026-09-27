@@ -103,8 +103,19 @@ export default function ContactForm() {
       </div>
       <label className="flex items-start gap-2 text-xs text-text-muted">
         <input type="checkbox" name="consent" required className="mt-0.5" />
-        Я даю согласие на обработку моих персональных данных в соответствии
-        с <a href="/privacy" className="text-seal underline underline-offset-4">политикой конфиденциальности</a>.
+        <span>
+          Я даю согласие на{" "}
+          <a href="/consent" className="text-seal underline underline-offset-4">
+            обработку персональных данных
+          </a>
+          .
+          <br />
+          Политика обработки персональных данных доступна по{" "}
+          <a href="/privacy" className="text-seal underline underline-offset-4">
+            ссылке
+          </a>
+          .
+        </span>
       </label>
 
       {status === "error" && (
