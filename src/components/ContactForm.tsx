@@ -1,6 +1,6 @@
 "use client";
 
-import { useState, useRef, type FormEvent } from "react";
+import { useEffect, useState, useRef, type FormEvent } from "react";
 
 type Status = "idle" | "loading" | "success" | "error";
 
@@ -10,7 +10,10 @@ export default function ContactForm() {
   // Момент монтирования формы — сервер сравнивает его со временем получения
   // запроса: живой человек не успевает найти и заполнить поля меньше чем за
   // 3 секунды, боты часто отправляют форму сразу после загрузки страницы.
-  const loadedAtRef = useRef(Date.now());
+  const loadedAtRef = useRef<number | null>(null);
+  useEffect(() => {
+    loadedAtRef.current = Date.now();
+  }, []);
 
   async function handleSubmit(e: FormEvent<HTMLFormElement>) {
     e.preventDefault();
@@ -31,7 +34,7 @@ export default function ContactForm() {
           message: data.get("message"),
           consent: data.get("consent") === "on",
           hp_check: data.get("hp_check"),
-          loadedAt: loadedAtRef.current,
+          loadedAt: loadedAtRef.current ?? Date.now(),
         }),
       });
 

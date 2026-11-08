@@ -1,21 +1,30 @@
 "use client";
 
-import { useEffect, useState } from "react";
+import { useState, useSyncExternalStore } from "react";
 
 const STORAGE_KEY = "cookie-consent-accepted";
 
-export default function CookieNotice() {
-  const [visible, setVisible] = useState(false);
+function subscribe(onStoreChange: () => void) {
+  window.addEventListener("storage", onStoreChange);
+  return () => window.removeEventListener("storage", onStoreChange);
+}
 
-  useEffect(() => {
-    try {
-      if (!localStorage.getItem(STORAGE_KEY)) {
-        setVisible(true);
-      }
-    } catch {
-      setVisible(true);
-    }
-  }, []);
+function getSnapshot() {
+  try {
+    return localStorage.getItem(STORAGE_KEY) === "1";
+  } catch {
+    return false;
+  }
+}
+
+function getServerSnapshot() {
+  return true;
+}
+
+export default function CookieNotice() {
+  const accepted = useSyncExternalStore(subscribe, getSnapshot, getServerSnapshot);
+  const [dismissed, setDismissed] = useState(false);
+  const visible = !accepted && !dismissed;
 
   function accept() {
     try {
@@ -23,7 +32,7 @@ export default function CookieNotice() {
     } catch {
       // ignore
     }
-    setVisible(false);
+    setDismissed(true);
   }
 
   if (!visible) return null;
